@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string-array name="array_of_hardiness_zones">
+            <item>0a</item>
+            <item>0b</item>
+            <item>1a</item>
+            <item>1b</item>
+            <item>2a</item>
+            <item>2b</item>
+            <item>3a</item>
+            <item>3b</item>
+            <item>4a</item>
+            <item>4b</item>
+            <item>5a</item>
+            <item>5b</item>
+            <item>6a</item>
+            <item>6b</item>
+            <item>7a</item>
+            <item>7b</item>
+            <item>8a</item>
+            <item>8b</item>
+            <item>9a</item>
+            <item>9b</item>
+            <item>10a</item>
+            <item>10b</item>
+            <item>11a</item>
+            <item>11b</item>
+            <item>12a</item>
+            <item>12b</item>
+            <item>13a</item>
+            <item>13b</item>
+        </string-array>
+
+</resources>

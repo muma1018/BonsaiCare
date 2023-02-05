@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="?attr/actionBarSize">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/small_padding"
+            android:layout_marginEnd="@dimen/small_padding">
+
+                <EditText
+                    android:id="@+id/insert_tree_species_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/auto_fill_hint_new_tree_species_name"
+                    android:inputType="textAutoComplete"
+                    android:textSize="18sp"
+                    android:autofillHints="@string/auto_fill_hint_new_tree_species_name" />
+
+            <EditText
+                android:id="@+id/insert_tree_species_name_latin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/auto_fill_hint_new_tree_species_name_latin"
+                android:inputType="textAutoComplete"
+                android:textSize="18sp"
+                android:autofillHints="@string/auto_fill_hint_new_tree_species_name_latin" />
+
+            <EditText
+                android:id="@+id/insert_tree_species_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/auto_fill_hint_new_tree_species_description"
+                android:inputType="textAutoComplete"
+                android:textSize="18sp"
+                android:autofillHints="@string/auto_fill_hint_new_tree_species_description" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/big_padding"
+                android:layout_marginStart="@dimen/small_padding"
+                android:layout_marginEnd="@dimen/small_padding">
+
+                <!-- Empty view to separate buttons in this horizontal layout -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/button_add"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="end"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/save_b"
+                    android:contentDescription="@string/default_string_placeholder"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

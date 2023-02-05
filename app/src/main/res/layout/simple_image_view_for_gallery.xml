@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:paddingTop="?attr/actionBarSize"
+    app:cardElevation="6dp">
+
+    <!-- This is the layouts for the list of trees shown in tree detail image gallery -->
+
+    <ImageView
+        android:id="@+id/imageView_tree_detail_image_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/round_outline"
+        android:clipToOutline="true"
+        android:contentDescription="@string/image_view_for_gallery_image">
+    </ImageView>
+
+</androidx.cardview.widget.CardView>

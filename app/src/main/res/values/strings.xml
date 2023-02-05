@@ -1,0 +1,418 @@
+<resources>
+    <!-- Todo MVP3: Translate to other languages -->
+    <string name="app_name">BonsaiCare</string>
+
+    <!-- Main Fragments -->
+    <string name="title_calendar">Calendar</string>
+    <string name="title_my_garden">My Garden</string>
+    <string name="title_about_us">About Us</string>
+
+    <!-- Strings for about us fragment and layout -->
+    <string name="settings_headline">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="about_us_hardiness_zone">Hardiness Zone</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
+    <string name="about_us_text">Hello, I am a Bonsai enthusiast and started developing interest in bonsai in around 2016. In 2020, I did a 3-month stay as a bonsai apprentice in a Tokyo-based bonsai garden. Currently I am enrolled in a bonsai class working towards graduation as an official bonsai artist in about 2028.</string>
+    <string name="feedback_headline">Feedback</string>
+    <string name="feedback_text">To constantly improve our App, feedback is always very much appreciated. If you have calendars to share that are not covered yet by the app (new tree species, hardiness zones, …), we are pleased to add them after reviewing.</string>
+    <string name="feedback_button">Send Feedback</string>
+    <string name="support_headline">How to Support us</string>
+    <string name="support_button">Donate</string>
+    <string name="support_text">Support us by donations via paypal.</string>
+    <string name="future_goals_headline">Future Goals</string>
+    <string name="future_goals_text">
+        We want improve the app and add features continuously. Donations helps us.\n\n
+        Planned features are:\n
+        • option to import/export calendars \n
+        • detailed tree descriptions \n
+        • additional languages
+    </string>
+    <string name="reset_settings">Reset Settings</string>
+
+    <!-- Hidden Fragment -->
+    <string name="title_hidden_fragment">Hidden Fragment</string>
+
+    <string name="app_information_headline">App Information</string>
+    <string name="app_version">app version: xx.xx</string>
+    <string name="thank_you_for_using_our_app">Thank you for using our App!</string>
+
+    <string name="title_tree_detail_card">Tree Details</string>
+
+    <string name="default_string_placeholder">Default String</string>
+
+    <!-- Fragment New Task -->
+    <string name="title_new_task">New Task</string>
+    <string name="select_task_type">Select Task Type …</string>
+
+    <!-- Fragment Tree Detail View -->
+    <string name="short_description_title_tree_detail_fragment"><u>Short Description</u>:</string>
+
+    <!-- String for Hardiness Zones ClickListener TextView -->
+    <string name="hardiness_zones_and_link">Hardiness Zones define geographical areas on the earth and their annual minimum temperature.\n\nIf you want to learn more about Hardiness Zones tap <a href="https://en.wikipedia.org/wiki/Hardiness_zone#/media/File:World_Hardiness_Zones.png">here</a>. </string>
+
+    <!--
+                We advise you to determine the following parameters of the tree carefully before any task is performed. <br>
+                <ul>
+                <li> &#8226; Variety</li>
+                <li> &#8226; Development Stage</li>
+                <li> &#8226; Age</li>
+                <li> &#8226; Health</li>
+                <li> &#8226; Soil</li>
+                <li> &#8226; Season</li>
+                <li> &#8226; Hardiness Zone</li>
+                </ul> </br>
+                -->
+
+    <string name="introduction_text"><![CDATA[
+                <p align="left">
+                BonsaiCare is your guide to keeping your bonsai trees healthy and thriving.
+                Our app provides advice and tips on how to care for your bonsai, including information on watering, pruning, repotting, and more.
+                </p>
+                <p align="left">
+                However, we want to remind you that proper care for your bonsai trees requires knowledge of the tree\'s variety, development stage, age, health, soil, and the season and hardiness zone in which the tree is located.
+                </p>
+                <p align="left">
+                Our app will help you understand these factors and how to address them, but ultimately, it\'s important to remember that the key to creating beautiful bonsai is providing optimal conditions for the tree\'s health.
+                </p>
+                <p align="left">
+                Always work towards providing optimal conditions as the basis of all prospective work.
+                </p>
+                </p>]]>
+    </string>
+
+    <!-- My Garden Fragment & Tree Detail Card Fragment-->
+    <string name="insert_my_tree_name">Tree Name (e.g. Larix Decidua #1)</string>
+    <string name="insert_my_tree_style">Style</string>
+    <string name="insert_date_of_birth">Date of Birth:</string>
+    <string name="insert_date_of_acquisition">Date of Acquisition:</string>
+
+    <!-- Filter Fragment -->
+    <string name="all_trees">All Trees</string>
+    <string name="my_trees">My Trees</string>
+    <string name="all">All</string>
+    <string name="my_hardiness_zone">My Hardiness Zone</string>
+    <string name="none">None</string>
+    <string name="tree_species_title">Tree Species</string>
+    <string name="hardiness_zones_title">Hardiness Zones</string>
+
+    <!-- From BonsaiApp_EmptyActivityTest -->
+    <!-- Row names for TableView -->
+    <string name="task">Task</string>
+    <string name="jan">Jan</string>
+    <string name="feb">Feb</string>
+    <string name="mar">Mar</string>
+    <string name="apr">Apr</string>
+    <string name="may">May</string>
+    <string name="jun">Jun</string>
+    <string name="jul">Jul</string>
+    <string name="aug">Aug</string>
+    <string name="sep">Sep</string>
+    <string name="oct">Oct</string>
+    <string name="nov">Nov</string>
+    <string name="dez">Dec</string>
+
+    <!-- Cards strings -->
+    <!-- CalendarTask Types -->
+    <string name="repotting">Repotting</string>
+    <string name="location">Location</string>
+    <string name="pinching">Pinching</string>
+    <string name="pruning">Pruning</string>
+    <string name="wiring">Wiring</string>
+    <string name="fertilizing">Fertilizing</string>
+    <string name="watering">Watering</string>
+    <string name="propagation">Propagation</string>
+    <string name="diseases">Diseases</string>
+    <string name="specifics">Specifics</string>
+
+    <!-- Detailed Task Descriptions -->
+    <string name="repotting_description">
+        Repotting is the task of not only potentially changing the container
+        of the plant but also includes exchanging substrate and cutting roots.
+        The tips of the roots (feeder roots) are the only parts of the root system that are able to collect nutrients and water.
+        If there is no more space in the pot for the roots to grow, the amount of feeder roots shrinks over time.
+        Therewith, the tree has less capacity to acquire vital recourses and gets weaker over time until it eventually dies.
+        Therefore, we are reducing the size of the root ball to create space for new roots to grow.
+        Strong roots should be removed in advantage of feeder roots being able to fill the space.\n\n
+        General:\n
+        • Use a drainage layer (substrate with increased grain size).\n
+        • Fix your tree to the pot using wire. This stabilizes the tree and helps the tree to grow new roots.\n
+        • Do not leave air pockets within the substrate.\n
+        • Potentially cover parts of the substrate with moss to decrease risk of root ball drying out (it also helps to keep the substrate in place when watering).\n\n
+        Substrate:\n
+        The mixture of different substrate components depends on factors described in the 7-points
+        (tree species, development stage, location, …). Recommendations on substrate mixtures are given within each care calendar in the
+        \'Repotting\' task.\n\n
+        The substrate mixture regulates\n
+        • water drainage\n
+        • water detention\n
+        • air circulation.\n\n
+        After repotting the care of the tree changes in the following ways.\n
+        Location: The tree should be located half-shaded and protected from winds, cold, and continuous rain.\n
+        Watering: According to the amount of roots that have been removed, the tree needs less water than usual due to the reduced number of feeder
+        roots. Root rot is a potential problem when over watering. However, directly after repotting give water to wash out dust particles until clean water drains from the pot.\n
+        Fertilization: Wait two to four weeks before starting fertilization.\n
+        Pruning: The amount of foliage mass should be reduced accordingly to the amount of roots that have been removed (the roots cannot support all that foliage mass).</string>
+    <string name="location_description">
+        All trees need to be exposed to direct or indirect sun light in order to do photosynthesis and generate energy for staying vital.\n\n
+        The location mainly focuses on\n
+        • amount of sun light\n
+        • temperature\n
+        • winds\n
+        the tree is exposed to. Cautions have to be taken for trees that are not hardy or need protection during the winter.
+        After repotting, the tree should be located in a protected area (see \'Repotting\').</string>
+    <string name="pinching_description">
+        Pinching describes the task of removing the terminal growth before the third leaf is developed during the growing season.
+        Maples can even be pinched before the first set of leaves is even fully developed.
+        Pinching helps to keep the tree in shape, reduce growth of girth and is especially important for trees in the refinement stage (S3).
+        This task can be undertaken with tweezers.
+    </string>
+    <string name="pruning_description">
+        Pruning is the task of cutting branches off of the tree.
+        It helps to define the style of the tree, shape the tree
+        (directional pruning) and to keep the tree in its general shape.
+        Directional pruning can be exploited if one pays attention to the bud that is cut back to.
+        The branch will continue its growth from the point of that bud and in the direction the bud is facing.
+        Small branches can often be cut throughout the year.
+        Strong branches need to be removed more carefully and wounds should be sealed to reduce the risk of infections and loss of water.
+        Branches of trees in their developmental stage (S1, S2) can be grown longer before being cut back,
+        trees in refinement stage (S3) should be cut earlier or be pinched (see \'Pinching\').</string>
+    <string name="defoliation_description">
+        Defoliation is the task of removing all, a portion of leaves or remove parts of leaves (reduce leaf size).
+        When defoliating, cut the stem of a leaf and leave a stub behind.
+        That way you avoid damaging the dormant bud that sits underneath that stem.
+        Defoliate big leaves or cut them partially to reduce the photosynthetic area.
+        Defoliate regions with strong growth harder than regions with weak growth.\n\n
+        The goals of defoliating are\n
+        • Increase ramification: The dormant buds underneath the leaves start to grow and the tree produces another flash with usually smaller leaves in the very same growing season.
+        This way the ramification is developed faster.\n
+        • Avoid die off of inner parts by allowing sun light and air flow reach the inner parts of the tree.\n
+        • Balance energy between regions of the tree.\n
+        • Reduce growth of girth.\n\n
+        Defoliation should be performed with extra care. Only defoliate or partially defoliate strong and healthy trees.
+        Do not defoliate too often per year or in consecutive growing seasons to not risk to weaken the tree too much.\n\n
+        Generally, after defoliation the care of the tree changes in the following ways.\n
+        Location: The tree should be located half-shaded to protect the potential remaining inner growth and the trunk from being burned from the sun (especially e.g. maple).\n
+        Watering: According to the amount of leaf mass that has been removed, the tree needs less water than usual. Root rot is a potential problem when over watering.</string>
+    <string name="wiring_description">
+        Wiring is the task of applying wire to the trunk and/or branches of the tree to shape the tree.\n\n
+        The general types of wire being used are\n
+        • aluminum (mostly for deciduous tree)\n
+        • copper (mostly for conifers)\n
+        • steel wire is being used occasionally.\n\n
+        Remove the wire before it bites in to avoid scars.
+        Some trees do not lose wire scars even after decades passed.
+        Guy wire can be applied to strong branches that are hard to bend by applying the wire around them.
+        Raffia or other protection materials like tape can be used to protect the tree from the wire biting in too quickly.
+        It is usually used when strong branches of conifers are being bend or for delicate deciduous trees like camelia.
+        Generally, the least amount of wire used the better.
+        It damages the tree less, has more aesthetics, is quicker to apply and cheaper.</string>
+    <string name="fertilizing_description">
+        Fertilizing is the task of applying fertilizer to the tree. Besides sun light, air, and water, trees need nutrients to
+        stay alive and healthy.\n\n
+        The main ingredients are:\n
+        • Nitrogen (N)\n
+        • Phosphorus (P)\n
+        • Potassium (K).\n\n
+        Mineral and/or organic fertilizer can be applied.
+        Recommendations on fertilization are given within each care calendar in the \'Fertilizing\' task.</string>
+    <string name="watering_description">
+        Watering is the task of providing water for the tree.
+        Wrong watering might be the single most important reason of trees dying.
+        Most trees do not tolerate dry root balls or water logging over a long period.
+        However, a tree dies faster when given no water than when given too much water.
+        Some trees have special requirements to the type of water that is applied.
+        If so, recommendations are given within each care calendar in the \'Watering\' task.
+        When applying water it is the easiest to give 100% water.
+        If the correct substrate etc. is used, this is fine.
+        Water should be re-applied once the top layer of soil starts to dry out.
+        However, pines tolerate being a bit dry whereas wisterias like it steadily moist (specific information is given in the trees calendars).
+        You can apply water over the leaves to harden them and make them more resistant.
+        Do not apply water on flowers to avoid damaging them.
+    </string>
+    <string name="propagation_description">
+        Common propagation techniques are:\n
+        • Seed [S]\n
+        • Cuttings [C]\n
+        • Root Cuttings [R]\n
+        • Air Layering [A].\n
+    </string>
+
+    <string name="diseases_description"><![CDATA[
+                <p align="left">
+                Common diseases are handled here.
+                <ul>
+                <li> &#8226; Aphids (aphidoidea)<br> Can be fought with common spray/sticks against sucking pests. </li>
+                <li> &#8226; Beech Mealy Bug (trionymus newsteadi) <br> Can be fought by spraying winter oil. </li>
+                <li> &#8226; Larva of flat-legged tenthred (craesus septentrionalis) <br> Should be picked right away. </li>
+                <li> &#8226; Lichen <br> Use algae remover. Liken can add details to the tree and do not necessarily have to be removed.</li>
+                <li> &#8226; Mealy bugs (pseudoccidae) <br> Apply winter oil spray for prevention. </li>
+                <li> &#8226; Mildew Is a sign of a weak plant. Adding common horsetail powder in the water for watering strengthens the tree against mildew (preventive). Common spray can be used when affected. </li>
+                <li> &#8226; Pine shoot moth (rhyacionia buoliana) <br> When affected, collect larvae as quickly as possible. They can eat the whole tree within days. </li>
+                <li> &#8226; Scale (coccus hesperidum) <br> Can be fought with common spray/sticks against sucking pests. </li>
+                <li> &#8226; Sitka sucking louse (liosomaphis abietinum) <br> Can be fought by spraying winter oil. </li>
+                <li> &#8226; Spider mites (tetranychidae) <br> Can be fought by increasing humidity. </li>
+                <li> &#8226; Spruce gall aphid (sacchiphantes viridis) <br> First generation growth at picea, second generation migrates to larix. When detected at picea, cut off gall to interrupt life cycle. When detected at larix, use common pesticides. </li>
+                <li> &#8226; White fly (trialeurodes vaporariorum) <br> Fight with common spray/sticks against sucking pests or spray. </li>
+                </ul>
+                </p>]]>
+                </string>
+
+    <string name="specifics_description">
+        Specific tasks and notes are denoted in the trees calendars.
+    </string>
+
+    <!-- Card List Adapter -->
+    <string name="tree">Tree</string>
+    <string name="description">[description]</string>
+
+    <!-- General local language strings here! -->
+    <string name="done">Done</string>
+    <string name="ok_button_title">OK</string>
+
+    <!-- Tree Species local language and latin -->
+    <string name="malus">Crabapple</string>
+    <string name="malus_latin">malus</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="berberis">Barberry</string>
+    <string name="berberis_latin">berberis</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="wisteria">Wisteria</string>
+    <string name="wisteria_latin">wisteria</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="bougainvillea">Bougainvillea</string>
+    <string name="bougainvillea_latin">bougainvillea</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="buxus">Boxwood</string>
+    <string name="buxus_latin">buxus</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="ulmus_parvifolia">Chinese Elm</string>
+    <string name="ulmus_parvifolia_latin">ulmus parvifolia</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="cotoneaster">Cotoneaster</string>
+    <string name="cotoneaster_latin">cotoneaster</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="acer_buergerianum">Trident Maple</string>
+    <string name="acer_buergerianum_latin">acer buergerianum</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="quercus">Oak</string>
+    <string name="quercus_latin">quercus</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="taxus_baccata">European Yew</string>
+    <string name="taxus_baccata_latin">taxus baccata</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="fraxinus_excelsior">European Ash</string>
+    <string name="fraxinus_excelsior_latin">fraxinus excelsior</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="acer_palmatum">Japanese Maple</string>
+    <string name="acer_palmatum_latin">acer palmatum</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="ficus">Fig</string>
+    <string name="ficus_latin">ficus</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="acer_campestre">Field Maple</string>
+    <string name="acer_campestre_latin">acer campestre</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="acer_ginalla">Amur Maple</string>
+    <string name="acer_ginalla_latin">acer ginalla</string>
+
+    <!-- Tree Types local language and latin -->
+    <string name="pyracantha">Firethorn</string>
+    <string name="pyracantha_latin">pyracantha</string>
+
+    <!-- Tree Types local language -->
+    <string name="picea">Spruce</string>
+    <string name="betula">Birch</string>
+    <string name="pinus_thunbergii">Jap. Black Pine</string>
+    <string name="taxus">Yew</string>
+    <string name="fraxinus">Ash</string>
+
+    <!-- Tree Type names latin -->
+    <string name="picea_latin">picea</string>
+    <string name="betula_latin">betula</string>
+    <string name="pinus_thunbergii_latin">pinus thunbergii</string>
+    <string name="taxus_latin">taxus</string>
+    <string name="fraxinus_latin">fraxinus</string>
+
+    <!-- String of tree types for new task / new tree activities -->
+    <string-array name="tree_types">
+        <item>@string/malus</item>
+        <item>@string/picea</item>
+        <item>@string/taxus_baccata</item>
+    </string-array>
+
+
+    <!-- Strings from android room with a view sample -->
+    <string name="new_task">Create New Task</string>
+    <string name="new_tree">Create New Tree</string>
+    <string name="star_legend">* obligatory</string>
+
+    <string name="task_type">Task Type:</string>
+    <string name="tree_species">Tree Species:</string>
+    <string name="tree_species_latin">Tree Species (latin):</string>
+    <string name="hardiness_zone">Hardiness Zone:</string>
+    <string name="short_description">Short Description</string>
+
+    <string name="tree_species_star">Tree Species *</string>
+    <string name="tree_species_latin_star">Tree Species (latin) *</string>
+
+    <string name="list_of_dates_hint">* Months, e.g.: 2,5</string>
+    <string name="list_of_labels_hint">Labels, e.g.: +,++,++,+</string>
+    <string name="long_description_hint">* Long task description …</string>
+    <string name="short_description_hint">Short task description …</string>
+
+    <!-- CameraX -->
+    <string name="take_picture">Take Picture</string>
+    <string name="take_picture_description">Todo take picture description string</string>
+
+    <!-- Fragment New Tree -->
+    <string name="title_new_tree_fragment">Add new Tree</string>
+    <string name="image_view_for_gallery_image">ImageView for Gallery Image</string>
+    <string name="image_view_for_thumbnail_image">ImageView for Thumbnail Image</string>
+    <string name="auto_fill_hint_tree_species">Tree Species</string>
+    <string name="select_tree_species">Select tree species …</string>
+    <string name="select_tree_species_latin">Select tree species (latin) …</string>
+
+    <string name="auto_fill_hint_insert_species_latin">Insert Species Latin</string>
+    <string name="auto_fill_hint_insert_tree_name">Insert Tree Name</string>
+    <string name="auto_fill_hint_insert_tree_style">Insert Tree Style</string>
+    <string name="auto_fill_hint_insert_date_of_birth">Insert Date of Birth</string>
+    <string name="auto_fill_hint_insert_date_of_acquisition">Insert Date of Acquisition</string>
+    <string name="auto_fill_hint_insert_short_description">Insert Short Description</string>
+
+    <!-- Fragment New Tree Species -->
+    <string name="title_new_tree_species_fragment">Add new Tree Species</string>
+    <string name="auto_fill_hint_new_tree_species_name">Name</string>
+    <string name="auto_fill_hint_new_tree_species_name_latin">Name (latin)</string>
+    <string name="auto_fill_hint_new_tree_species_description">Description</string>
+
+    <string name="image_view_thumbnail_image">ImageView to hold thumbnail image.</string>
+
+    <!-- Fragment Edit Tree -->
+    <string name="title_edit_tree_fragment">Edit Tree</string>
+
+    <!-- Fragment Tree Detail Card -->
+    <string name="title_tree_species">Species:</string>
+    <string name="title_tree_species_latin">Sp. (lat.):</string>
+    <string name="title_style">Style:</string>
+    <string name="title_date_of_birth">Date of Birth:</string>
+    <string name="title_date_of_acquisition">Date of Acquis.:</string>
+
+    <!-- Fragment ImageViewFullScreenFragment -->
+    <string name="title_image_view_full_screen_fragment" />
+
+</resources>

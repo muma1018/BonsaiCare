@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="?attr/actionBarSize">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/small_padding">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/task_type"
+                    android:textSize="18sp"/>
+                <Spinner
+                    android:id="@+id/spinner_task_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/min_height"
+                    android:gravity="end"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:hint="@string/select_task_type"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hardiness_zone"
+                    android:textSize="18sp">
+                </TextView>
+                <Spinner
+                    android:id="@+id/spinner_hardiness_zone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/select_tree_species"
+                    android:gravity="end"
+                    android:textAlignment="textEnd"
+                    android:minHeight="@dimen/min_height"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/tree_species"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="2">
+
+                <Spinner
+                    android:id="@+id/spinner_tree_species"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/select_tree_species"
+                    android:gravity="end"
+                    android:textAlignment="textEnd"
+                    android:minHeight="@dimen/min_height"
+                    android:layout_weight="1"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_tree_species_latin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/select_tree_species_latin"
+                    android:gravity="end"
+                    android:textAlignment="textEnd"
+                    android:minHeight="@dimen/min_height"
+                    android:layout_weight="1"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/insert_short_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/short_description_hint"
+                android:inputType="textAutoComplete"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp"
+                android:autofillHints="@string/short_description_hint" />
+
+            <EditText
+                android:id="@+id/insert_long_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/long_description_hint"
+                android:inputType="textAutoComplete"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp"
+                android:autofillHints="@string/long_description_hint" />
+
+            <EditText
+                android:id="@+id/insert_list_of_dates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/list_of_dates_hint"
+                android:digits="0123456789,"
+                android:inputType="textAutoComplete"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp"
+                android:autofillHints="@string/list_of_dates_hint" />
+
+            <EditText
+                android:id="@+id/insert_list_of_labels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/list_of_labels_hint"
+                android:inputType="textAutoComplete"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp"
+                android:autofillHints="@string/list_of_labels_hint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="@dimen/big_padding"
+                android:text="@string/star_legend"
+                android:textSize="12sp"
+                android:gravity="end"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/big_padding"
+                android:layout_marginEnd="@dimen/big_padding">
+
+                <ImageButton
+                    android:id="@+id/btn_new_tree_species"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/book_b"
+                    android:contentDescription="@string/default_string_placeholder" />
+
+                <!-- Empty view to separate buttons in this horizontal layout -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/button_save"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/save_b"
+                    android:contentDescription="@string/default_string_placeholder"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

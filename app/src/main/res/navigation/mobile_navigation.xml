@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_my_garden">
+
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="com.example.bonsaicare.ui.calendar.CalendarFragment"
+        android:label="@string/title_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_navigation_calendar_to_filter"
+            app:destination="@id/navigation_filter"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_calendar_to_new_task"
+            app:destination="@id/navigation_new_task" />
+        <action
+            android:id="@+id/action_navigation_calendar_to_my_garden"
+            app:destination="@id/navigation_my_garden" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_new_task"
+        android:name="com.example.bonsaicare.ui.calendar.NewTaskFragment"
+        android:label="@string/title_new_task"
+        tools:layout="@layout/fragment_new_task" >
+        <action
+            android:id="@+id/action_navigation_new_task_to_calendar"
+            app:destination="@id/navigation_calendar" />
+        <action
+            android:id="@+id/action_navigation_new_task_to_new_tree_species"
+            app:destination="@id/navigation_new_tree_species" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_my_garden"
+        android:name="com.example.bonsaicare.ui.mygarden.MyGardenFragment"
+        android:label="@string/title_my_garden"
+        tools:layout="@layout/fragment_my_garden" >
+        <action
+            android:id="@+id/action_navigation_my_garden_to_tree_detail_card"
+            app:destination="@+id/navigation_tree_detail_card" />
+        <action
+            android:id="@+id/action_navigation_my_garden_to_new_tree"
+            app:destination="@+id/navigation_new_tree_fragment" />
+        <action
+            android:id="@+id/action_navigation_my_garden_to_my_garden"
+            app:destination="@+id/navigation_my_garden" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_new_tree_fragment"
+        android:name="com.example.bonsaicare.ui.mygarden.treedetail.newtree.NewTreeFragment"
+        android:label="@string/title_new_tree_fragment"
+        tools:layout="@layout/fragment_new_tree" >
+        <action
+            android:id="@+id/action_navigation_new_tree_to_my_garden"
+            app:destination="@+id/navigation_my_garden" />
+        <action
+            android:id="@+id/action_navigation_new_tree_to_image_view_full_screen"
+            app:destination="@+id/navigation_image_view_full_screen" />
+        <action
+            android:id="@+id/action_navigation_new_tree_to_new_tree_species"
+            app:destination="@+id/navigation_new_tree_species" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_new_tree_species"
+        android:name="com.example.bonsaicare.ui.mygarden.treedetail.newtree.NewTreeSpeciesFragment"
+        android:label="@string/title_new_tree_species_fragment"
+        tools:layout="@layout/fragment_new_tree_species">
+        <action
+            android:id="@+id/action_navigation_new_tree_species_to_new_tree"
+            app:destination="@+id/navigation_new_tree_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_image_view_full_screen"
+        android:name="com.example.bonsaicare.ui.mygarden.treedetail.ImageViewFullScreenFragment"
+        android:label="@string/title_image_view_full_screen_fragment"
+        tools:layout="@layout/fragment_image_view_full_screen" >
+        <action
+            android:id="@+id/action_navigation_image_view_full_screen_to_tree_detail"
+            app:destination="@+id/navigation_tree_detail_card" />
+        <action
+            android:id="@+id/action_navigation_image_view_full_screen_to_new_tree"
+            app:destination="@+id/navigation_new_tree_fragment" />
+        <action
+            android:id="@+id/action_navigation_image_view_full_screen_to_edit_tree"
+            app:destination="@+id/navigation_edit_tree_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_tree_detail_card"
+        android:name="com.example.bonsaicare.ui.mygarden.treedetail.TreeDetailFragment"
+        android:label="@string/title_tree_detail_card"
+        tools:layout="@layout/fragment_tree_detail_card" >
+        <action
+            android:id="@+id/action_navigation_tree_detail_card_to_navigation_my_garden"
+            app:destination="@id/navigation_my_garden" />
+        <action
+            android:id="@+id/action_navigation_tree_detail_to_navigation_edit_tree"
+            app:destination="@+id/navigation_edit_tree_fragment" />
+        <action
+            android:id="@+id/action_navigation_new_tree_to_image_view_full_screen"
+            app:destination="@+id/navigation_image_view_full_screen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_edit_tree_fragment"
+        android:name="com.example.bonsaicare.ui.mygarden.treedetail.edittree.EditTreeFragment"
+        android:label="@string/title_edit_tree_fragment"
+        tools:layout="@layout/fragment_edit_tree">
+        <action
+            android:id="@+id/action_navigation_edit_tree_to_navigation_tree_detail"
+            app:destination="@+id/navigation_tree_detail_card" />
+        <action
+            android:id="@+id/action_navigation_edit_tree_to_image_view_full_screen"
+            app:destination="@+id/navigation_image_view_full_screen" />
+        <action
+            android:id="@+id/action_navigation_edit_tree_to_new_tree_species"
+            app:destination="@id/navigation_new_tree_species" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_filter"
+        android:name="com.example.bonsaicare.ui.calendar.filter.FilterFragment"
+        android:label="Filter"
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_navigation_filter_to_navigation_calendar"
+            app:destination="@id/navigation_calendar"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_aboutus"
+        android:name="com.example.bonsaicare.ui.aboutus.AboutUsFragment"
+        android:label="@string/title_about_us"
+        tools:layout="@layout/fragment_aboutus" >
+        <action
+            android:id="@+id/action_navigation_aboutus_to_hidden"
+            app:destination="@id/navigation_hidden"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_hidden"
+        android:name="com.example.bonsaicare.ui.aboutus.HiddenFragment"
+        android:label="@string/title_hidden_fragment"
+        tools:layout="@layout/fragment_hidden" >
+        <action
+            android:id="@+id/action_navigation_hidden_to_aboutus"
+            app:destination="@id/navigation_aboutus"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="gray">#FF808080</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#6ab343</color>
+    <color name="colorPrimaryDark">#388310</color>
+    <color name="colorAccent">#6ab343</color>
+    <color name="green_color">#388310</color>
+    <color name="white_text_color">#f0f0f0</color>
+
+    <!-- CalendarTask colors -->
+    <color name="repotting">#F9E4D6</color>
+    <color name="location">#E8EBD5</color>
+    <color name="pinching">#CEDDEB</color>
+    <color name="pruning">#D4BDE7</color>
+    <color name="defoliation">#caf1e9</color>
+    <color name="wiring">#F5CBE0</color>
+    <color name="fertilizing">#caf1e9</color>
+    <color name="watering">#d3eeff</color>
+    <color name="propagation">#e2fcda</color>
+    <color name="diseases">#DAFCF4</color>
+    <color name="specifics">#FCDADA</color>
+
+    <color name="colorTextForeground">#FF000000</color>
+    <color name="colorTextBackground">#FFFFFF</color>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_set_as_thumbnail"
+        android:icon="@drawable/ic_image_set_as_thumbnail_24"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="Set As Thumbnail Image" />
+
+    <item
+        android:id="@+id/item_image_delete"
+        android:icon="@drawable/ic_image_delete_forever_24"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="Delete Image" />
+</menu>

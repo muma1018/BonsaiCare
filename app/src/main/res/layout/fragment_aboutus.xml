@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.aboutus.AboutUsFragment"
+    android:paddingTop="?attr/actionBarSize"
+    android:paddingBottom="60dp">
+
+    <data>
+        <variable
+            name="aboutUsFragment"
+            type="com.example.bonsaicare.ui.aboutus.AboutUsFragment" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/side_margin">
+
+        <TextView
+            android:id="@+id/text_view_headline_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_headline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <Switch
+            android:id="@+id/compound_button_dark_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/dark_mode"
+            android:textColor="@color/gray"
+            android:checked="false"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_settings"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_settings"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_us_hardiness_zone"
+                android:layout_weight="3"
+                android:textColor="@color/gray">
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinner_hardiness_zone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="@string/select_tree_species"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/button_send_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/button_send_feedback"
+            />
+
+        <TextView
+            android:id="@+id/text_view_headline_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_about_us"
+            android:textSize="16sp"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/compound_button_dark_mode"
+            app:layout_constraintTop_toBottomOf="@+id/compound_button_dark_mode"
+            />
+        <TextView
+            android:id="@+id/text_view_information_about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/about_us_text"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_about_us"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_about_us"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/button_send_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/button_send_feedback"
+            />
+
+        <TextView
+            android:id="@+id/text_view_headline_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/feedback_headline"
+            android:textSize="16sp"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/text_view_information_about_us"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_information_about_us"
+            />
+        <TextView
+            android:id="@+id/text_view_information_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/feedback_text"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_feedback"
+            />
+
+        <Button
+            android:id="@+id/button_send_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/feedback_button"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_information_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_information_feedback"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/button_send_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/button_send_feedback"
+            />
+
+        <TextView
+            android:id="@+id/text_view_headline_support"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/support_headline"
+            android:textSize="16sp"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/text_view_information_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_information_feedback"
+            />
+
+        <!-- Todo MVP2: Add " and by following on instagram @bonsaicareapp" when we have ig -->
+        <TextView
+            android:id="@+id/text_view_information_support"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/support_text"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_support"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_support"
+            />
+
+        <Button
+            android:id="@+id/button_paypal_donate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/support_button"
+            app:layout_constraintStart_toStartOf="@+id/text_view_information_support"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_information_support" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/button_send_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/button_send_feedback"
+            />
+
+        <TextView
+            android:id="@+id/text_view_headline_future_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/future_goals_headline"
+            android:textSize="16sp"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/button_paypal_donate"
+            app:layout_constraintTop_toBottomOf="@+id/button_paypal_donate"
+            />
+        <TextView
+            android:id="@+id/text_view_information_future_features"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/future_goals_text"
+            android:layout_gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_future_features"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_future_features"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_future_features"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_future_features"
+            />
+
+        <TextView
+            android:id="@+id/text_view_headline_reset_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/reset_settings"
+            android:textSize="16sp"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_future_features"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_future_features"
+            />
+
+        <!-- Button to reset settings -->
+        <Button
+            android:id="@+id/button_reset_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_settings"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_future_features"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_future_features">
+        </Button>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_information_future_features"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_information_future_features"
+            />
+
+        <TextView
+            android:id="@+id/text_view_headline_app_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/app_information_headline"
+            android:textSize="16sp"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/text_thank_you_for_using_our_app"
+            app:layout_constraintTop_toBottomOf="@+id/text_thank_you_for_using_our_app"
+            />
+
+        <TextView
+            android:id="@+id/text_view_information_app_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/app_version"
+            app:layout_constraintStart_toStartOf="@+id/text_view_headline_app_information"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_headline_app_information"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/button_send_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/button_send_feedback"
+            />
+
+        <TextView
+            android:id="@+id/text_thank_you_for_using_our_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:text="@string/thank_you_for_using_our_app"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>
