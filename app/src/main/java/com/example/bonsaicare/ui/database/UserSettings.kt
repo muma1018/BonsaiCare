@@ -20,7 +20,7 @@ class UserSettings {
 
     // List of Tree Species actively set in the calendar filter
     @ColumnInfo(name = "active_filtered_tree_species")
-    // Todo: Could this be a parameter in the TreeSpecies class (Boolean: Filtered)?
+    // Todo MVP3?: Could this be a parameter in the TreeSpecies class (Boolean: Filtered)?
     var activeFilteredTreeSpecies: MutableSet<String> = mutableSetOf("")
 
     // List of Hardiness Zones actively set in the calendar filter

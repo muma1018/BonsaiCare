@@ -33,7 +33,6 @@ import com.example.bonsaicare.ui.database.TreeSpecies
 import com.example.bonsaicare.ui.isValidDateString
 import java.time.LocalDate
 
-// Todo: First time changing the normal spinner does not trigger the latin spinner (goes both ways)
 class EditTreeFragment : Fragment() {
 
     private var _binding: FragmentEditTreeBinding? = null
@@ -475,7 +474,7 @@ class EditTreeFragment : Fragment() {
     }
 
     fun dialogSaveChanges() {
-        // Todo MVP2: Only ask the user if they made changes (applies also for NewTreeFragment.kt)
+        // Todo MVP3: Only ask the user if they made changes (applies also for NewTreeFragment.kt)
         // Ask the user if they really want to go back and discard changes
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Discard changes?")

@@ -16,7 +16,7 @@ data class TreeSpecies (
     @ColumnInfo(name = "description")
     var description: String = "default description",
 
-    // Todo: Parameter not used yet
+    // Todo MVP3?: Parameter not used yet
     @ColumnInfo(name = "filtered")
     var filtered: Boolean = true
 )

@@ -19,9 +19,6 @@ import com.example.bonsaicare.databinding.FragmentNewTaskBinding
 import com.example.bonsaicare.ui.database.Task
 import com.example.bonsaicare.ui.database.TreeSpecies
 
-
-// Todo MVP3: User can create new TaskType
-
 class NewTaskFragment : Fragment() {
 
     private var _binding: FragmentNewTaskBinding? = null

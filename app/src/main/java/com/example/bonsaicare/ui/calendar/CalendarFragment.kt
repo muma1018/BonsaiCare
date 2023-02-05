@@ -1,16 +1,20 @@
 package com.example.bonsaicare.ui.calendar
 
+import android.app.AlertDialog
 import android.graphics.Color
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.bonsaicare.R
 import com.example.bonsaicare.databinding.FragmentCalendarBinding
 
@@ -101,20 +105,25 @@ class CalendarFragment : Fragment() {
 
             // Observe all tasks
             viewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
-
                 // Convert tasks to cards
                 val cards = createCardsByTreeType(tasks)
 
-                // Remove cards that are not in activeFilterTreeTypes
-                // Loop over cards
-                for (i in cards.indices.reversed()) {
-                    // Remove card if its treeType is not in activeFilterTreeTypes or not in activeFilterHardinessZones
-                    if (cards[i].treeSpecies.name !in viewModel.getSettingsActiveFilteredTreeSpecies() || cards[i].hardinessZone !in viewModel.getSettingsActiveFilteredHardinessZones()  ) {
-                        cards.removeAt(i)
+                // Try catch to prevent crash when no active filtered tree species are set
+                try {
+                    // Filter cards with list from activeFilterTreeTypes
+                    for (i in cards.indices.reversed()) {
+                        // Remove task if its treeType is not in activeFilterTreeTypes or not in activeFilterHardinessZones
+                        if (cards[i].treeSpecies.name !in viewModel.getSettingsActiveFilteredTreeSpecies() || cards[i].hardinessZone !in viewModel.getSettingsActiveFilteredHardinessZones() ) {
+                            cards.removeAt(i)
+                        }
                     }
+
+                    // Update the cached copy of the words in the adapter.
+                    cards.let { cardsTreeAdapter.submitList(it) }
+
+                } catch (e: Exception) {
+                    // Do nothing
                 }
-                // Update the cached copy of the words in the adapter.
-                cards.let { cardsTreeAdapter.submitList(it) }
             }
 
         } else {
@@ -196,30 +205,36 @@ class CalendarFragment : Fragment() {
             }
         }
 
-        // Make the new task button grayscale
-        binding.imgBtnAddNewTask.setColorFilter(Color.argb(255, 128, 128, 128))
+        // Make the new task button grayscale convert from color to grayscale
+        val matrix = ColorMatrix()
+        matrix.setSaturation(0f)
+        val filter = ColorMatrixColorFilter(matrix)
+        binding.imgBtnAddNewTask.colorFilter = filter
+
 
         // Variable to store boolean if New Task feature is active
+        // Todo MVP3: Enable CreateNewTask feature for MVP3
         var newTaskFeatureActive = false
 
         // Create onClickListener on AddNewTask button to start new task activity
         binding.imgBtnAddNewTask.setOnClickListener {
             // If newTaskFeatureActive is false, show dialog
-//            if (!newTaskFeatureActive) {
-//                // Pop up dialog to tell the user that this feature will be activated in a future version
-//                val builder = AlertDialog.Builder(requireContext())
-//                builder.setTitle("Feature not available")
-//                builder.setMessage("This feature will be activated in a future version.")
-//                builder.setPositiveButton("OK") { _, _ ->
-//                    // Do nothing
-//                }
-//                val dialog: AlertDialog = builder.create()
-//                dialog.show()
-//                //return@setOnClickListener
-//            }
+            if (!newTaskFeatureActive) {
+                // Pop up dialog to tell the user that this feature will be activated in a future version
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setTitle("Feature not available")
+                builder.setMessage("This feature will be activated in a future version. \n" +
+                        "Consider donating to support the development of this app.")
+                builder.setPositiveButton("OK") { _, _ ->
+                    // Do nothing
+                }
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+                //return@setOnClickListener
+            }
             // If newTaskFeatureActive is true, navigate to new task fragment
             // Navigate to new task fragment
-            findNavController().navigate(R.id.action_navigation_calendar_to_new_task)
+            //findNavController().navigate(R.id.action_navigation_calendar_to_new_task)
         }
 
         // Update recycler view
