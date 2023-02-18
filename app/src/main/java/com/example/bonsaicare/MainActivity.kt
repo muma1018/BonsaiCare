@@ -28,9 +28,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_calendar, R.id.navigation_my_garden, R.id.navigation_aboutus
-            )
+            setOf(R.id.navigation_calendar, R.id.navigation_my_garden, R.id.navigation_aboutus)
         )
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Setup Navigation to be hidden when not in main fragments (calendar, my_garden, aboutus)
+        // Setup Navigation to be hidden when not in main fragments (calendar, my garden, about us)
         setupNav()
 
     }

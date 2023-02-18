@@ -13,6 +13,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -22,9 +23,8 @@ import com.example.bonsaicare.R
 import com.example.bonsaicare.ui.calendar.BonsaiApplication
 import com.example.bonsaicare.ui.calendar.BonsaiViewModel
 import com.example.bonsaicare.ui.calendar.BonsaiViewModelFactory
+import java.io.File
 
-// Todo: Add option to choose hardiness zone
-//  Why do we need a hardiness zone for the user?
 
 class AboutUsFragment : Fragment() {
     // This fragment contains information about the app and the developers as well as settings
@@ -54,9 +54,9 @@ class AboutUsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set text for Thank You! textView
-        binding.textThankYouForUsingOurApp.text = "Thank You for using our App!"
+        binding.textThankYouForUsingOurApp.text = resources.getString(R.string.text_thank_you_for_using_our_app)
 
-        // Todo MVP2: Implement the 'hidden' feature for hidden fragment
+        // Todo MVP3: Implement the 'hidden' feature for hidden fragment - e.g. gives access to all calendars?
         // Initialize a counter variable to keep track of the number of times the TextView has been pressed
         var pressCounter = 0
 
@@ -136,8 +136,13 @@ class AboutUsFragment : Fragment() {
             resetSettings()
         }
 
-        // Set version name in "App Information" TextView
-        binding.textViewInformationAppInformation.text = "App Version: " + BuildConfig.VERSION_NAME
+        // Set click listener for export database button
+        binding.buttonExportDatabase.setOnClickListener {
+            exportDatabase()
+        }
+
+        // Set version name in "App Information" TextView, use resource string with placeholders
+        binding.textViewInformationAppInformation.text = resources.getString(R.string.text_app_version, BuildConfig.VERSION_NAME)
     }
 
     // Donate via pay-pal-me
@@ -165,8 +170,10 @@ class AboutUsFragment : Fragment() {
             .putExtra(Intent.EXTRA_SUBJECT, "Feedback")
             .putExtra(Intent.EXTRA_EMAIL, eMailIds)
 
-        if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
-            startActivity(intent)
+        activity?.packageManager?.let { packageManager ->
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
         }
     }
 
@@ -186,6 +193,32 @@ class AboutUsFragment : Fragment() {
             // Do nothing
         }
         builder.show()
+    }
+
+    // Function to export database
+    private fun exportDatabase() {
+        // Get database path
+        val dbPath = requireContext().getDatabasePath("bonsai_database")
+
+        // Get file name
+        val fileName = "bonsai_database.db"
+
+        // Get file path
+        val filePath = File(requireContext().filesDir, fileName)
+
+        // Copy database to file path
+        dbPath.copyTo(filePath, true)
+
+        // Get uri for file
+        val uri = FileProvider.getUriForFile(requireContext(), "com.example.bonsaicare.fileprovider", filePath)
+
+        // Create intent
+        val intent = Intent(Intent.ACTION_SEND)
+            .setType("application/octet-stream")
+            .putExtra(Intent.EXTRA_STREAM, uri)
+
+        // Start activity
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

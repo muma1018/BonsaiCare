@@ -14,9 +14,13 @@
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="about_us_text">Hello, I am a Bonsai enthusiast and started developing interest in bonsai in around 2016. In 2020, I did a 3-month stay as a bonsai apprentice in a Tokyo-based bonsai garden. Currently I am enrolled in a bonsai class working towards graduation as an official bonsai artist in about 2028.</string>
+    <string name="text_thank_you_for_using_our_app">Thank You for using our App!</string>
+    <!-- This is a resource string with placeholder -->
+    <string name="text_app_version">App Version: %1$s</string>
     <string name="feedback_headline">Feedback</string>
     <string name="feedback_text">To constantly improve our App, feedback is always very much appreciated. If you have calendars to share that are not covered yet by the app (new tree species, hardiness zones, …), we are pleased to add them after reviewing.</string>
     <string name="feedback_button">Send Feedback</string>
+    <string name="export_database">Export Database</string>
     <string name="support_headline">How to Support us</string>
     <string name="support_button">Donate</string>
     <string name="support_text">Support us by donations via paypal.</string>

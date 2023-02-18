@@ -73,6 +73,16 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/button_export_database"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/export_database"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_information_feedback"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_information_feedback"
+            />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

@@ -9,13 +9,20 @@ class BonsaiApplication : Application() {
     // No need to cancel this scope as it'll be torn down with the process
     private val applicationScope = CoroutineScope(SupervisorJob())
 
-    // Using by lazy so the database and the repository are only created when they're needed
+    lateinit var database: BonsaiDB
+    lateinit var repository: BonsaiRepository
+
+    // Using 'by lazy' so the database and the repository are only created when they're needed
     // rather than when the application starts
-    val database by lazy { BonsaiDB.getInstance(this, applicationScope) }
-    val repository by lazy { BonsaiRepository(
-        database.taskDao(),
-        database.treeSpeciesDao(),
-        database.taskTypeDao(),
-        database.treesDao(),
-        database.userSettingsDao()) }
+    // We do not 'by lazy' here, because we need to init the database and the repository directly
+    override fun onCreate() {
+        super.onCreate()
+        database = BonsaiDB.getInstance(this, applicationScope)
+        repository = BonsaiRepository(
+            database.taskDao(),
+            database.treeSpeciesDao(),
+            database.taskTypeDao(),
+            database.treesDao(),
+            database.userSettingsDao())
+    }
 }

@@ -17,6 +17,7 @@ import com.example.bonsaicare.ui.calendar.BonsaiViewModel
 import com.example.bonsaicare.ui.calendar.BonsaiViewModelFactory
 import com.example.bonsaicare.ui.calendar.BonsaiApplication
 
+// Todo: When app is started, the filter is not applied. Only when the user changes the filter, the filter is applied.
 class FilterFragment : Fragment() {
 
     private var _binding: FragmentFilterBinding? = null
@@ -73,7 +74,7 @@ class FilterFragment : Fragment() {
 
             // Todo: Why do we have to loop over them and are not able to get them directly from DB?
             // Loop over all trees and add them to a list
-            var allTrees = listOf<String>()
+            val allTrees = mutableListOf<String>()
             for (i in 0 until numberTmp) {
                 allTrees += viewModel.getTreeAtIndex(i).treeSpecies.name
             }

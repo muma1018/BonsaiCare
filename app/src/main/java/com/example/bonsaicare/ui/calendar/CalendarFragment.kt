@@ -1,16 +1,13 @@
 package com.example.bonsaicare.ui.calendar
 
 import android.app.AlertDialog
-import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -58,9 +55,6 @@ class CalendarFragment : Fragment() {
                 view : View ->
             view.findNavController().navigate(R.id.action_navigation_calendar_to_filter)
         }
-
-        // Debug: This clear is jut used for test purposes, it resets the database on every app startup
-        //viewModel.clear()
 
         // If this is the first start up of the app, active filtered tree species is "1STARTUP"
         if (viewModel.getSettingsFirstAppStartUp()) {
@@ -211,10 +205,9 @@ class CalendarFragment : Fragment() {
         val filter = ColorMatrixColorFilter(matrix)
         binding.imgBtnAddNewTask.colorFilter = filter
 
-
         // Variable to store boolean if New Task feature is active
         // Todo MVP3: Enable CreateNewTask feature for MVP3
-        var newTaskFeatureActive = false
+        val newTaskFeatureActive = false
 
         // Create onClickListener on AddNewTask button to start new task activity
         binding.imgBtnAddNewTask.setOnClickListener {

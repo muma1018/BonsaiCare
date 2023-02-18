@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -75,7 +76,6 @@ class MyGardenFragment : Fragment() {
             var treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", description= "shortDescriptionTmp")
             var testTree = Tree(
                 name = "Rose#1",
-                //imagesResourceIdDefault = R.drawable.tree_larix_decidua,
                 imagesUri = mutableListOf(
                     Uri.Builder()
                     .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
@@ -90,6 +90,10 @@ class MyGardenFragment : Fragment() {
                     .build()),
                 treeSpecies = treeSpeciesTmp)
             viewModel.insertTree(testTree)
+
+            // Add toast that the tree was added
+            val toast = Toast.makeText(context, "Added tree", Toast.LENGTH_SHORT)
+            toast.show()
 
             // Create new tree
             treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", description= "shortDescriptionTest")
@@ -144,7 +148,6 @@ class MyGardenFragment : Fragment() {
             view.findNavController().navigate(R.id.action_navigation_my_garden_to_new_tree)
         }
 
-
         // Set text for alert dialog
         val appWelcomeText =
             HtmlCompat.fromHtml(binding.root.resources.getString(R.string.introduction_text), HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
@@ -153,7 +156,7 @@ class MyGardenFragment : Fragment() {
         val dialogBuilderStartUp = AlertDialog.Builder(binding.root.context)
 
         // Show Welcome Alert if not False
-        // Note: If user clicks super-fast (basically < 1 sec on pixel) on 'do not show again',
+        // Note: If user clicks super-fast (basically < 1 sec on pixel device) 'do not show again',
         // before the database is initialized, at first start-up of the app when it is fresh
         // installed, then the settings will not stick
         if (!viewModel.getSettingsDoNotShowAlert()){
@@ -161,9 +164,9 @@ class MyGardenFragment : Fragment() {
                 // If the dialog is cancelable
                 .setCancelable(true)
                 // Negative button text and action
-                .setNegativeButton("Thanks!", DialogInterface.OnClickListener {
-                        dialog, _ -> dialog.cancel()
-                })
+                .setNegativeButton("Thanks!") { dialog, _ ->
+                    dialog.cancel()
+                }
                 .setNeutralButton("Don't show again"){
                         dialog, _ -> dialog.cancel()
                     // Set doNotShowAlert in UserSettings to true if user does not want to see it again
