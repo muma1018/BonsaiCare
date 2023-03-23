@@ -22,7 +22,7 @@ class BonsaiRepository(private val taskDao: TaskDao,
     val allTrees: LiveData<List<Tree>> = databaseTreesDao.getAllTrees()
     val allTreeSpecies: Flow<List<TreeSpecies>> = treeSpeciesDao.getAllTreeSpecies()
 
-    val numberOfTrees: Int = databaseTreesDao.getCount()
+    val numberOfTrees: LiveData<Int> = databaseTreesDao.getCount()
 
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
     // implement anything else to ensure we're not doing long running database work

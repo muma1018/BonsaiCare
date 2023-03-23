@@ -15,6 +15,8 @@ import androidx.navigation.findNavController
 import com.example.bonsaicare.R
 import com.example.bonsaicare.databinding.FragmentCalendarBinding
 
+// Todo: ON first startup the Filters 'All Trees' and 'All' hardiness zones are ticked, but no trees are shown, fix that
+//  Also change 'All Trees' to 'All' and 'My Trees' to 'Own'?
 class CalendarFragment : Fragment() {
 
     // Init viewModel

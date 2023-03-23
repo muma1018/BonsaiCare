@@ -76,7 +76,7 @@ class NewTreeSpeciesFragment : Fragment() {
                     Toast.makeText(requireContext(), "New Tree Species added.", Toast.LENGTH_LONG).show()
 
                     // Update database with treeSpecies (this will be ignored if tree species already exists
-                    sharedBonsaiViewModel.insertTreeSpecies(TreeSpecies(name = nameTmp, nameLatin = nameLatinTmp, description = descriptionTmp))
+                    sharedBonsaiViewModel.insertTreeSpecies(TreeSpecies(name = nameTmp, nameLatin = nameLatinTmp, restricted = false, description = descriptionTmp))
 
                     // Just navigate back to last visited fragment (we can visit this fragment from different locations)
                     view.findNavController().popBackStack()

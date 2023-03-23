@@ -4,6 +4,7 @@ import androidx.room.*
 
 @Dao
 interface UserSettingsDao {
+    // We only use one setting (like singleton) where id = 0
 
     // Convenience methods - let you insert, update, and delete rows in your database without writing any SQL code.
     @Insert(onConflict = OnConflictStrategy.REPLACE)

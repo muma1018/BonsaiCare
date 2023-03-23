@@ -55,7 +55,7 @@ fun createCardsByTreeType(allCalendarTasks: List<Task>): MutableList<CardTreeSpe
         // If card of current treeType is not existent, create new card
         if (!cardFound || allCards.size ==0) {
             // Create new card with current task
-            val newCard = CardTreeSpecies(TreeSpecies(name = task.treeSpecies.name, nameLatin = task.treeSpecies.nameLatin, description = task.treeSpecies.description), task.hardinessZone, mutableListOf(task), "defaultCardName")
+            val newCard = CardTreeSpecies(TreeSpecies(name = task.treeSpecies.name, nameLatin = task.treeSpecies.nameLatin, restricted = false, description = task.treeSpecies.description), task.hardinessZone, mutableListOf(task), "defaultCardName")
 
             // Add new card to list of cards
             allCards.add(newCard)

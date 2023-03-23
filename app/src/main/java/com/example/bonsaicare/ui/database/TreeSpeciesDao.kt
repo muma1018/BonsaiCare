@@ -37,15 +37,15 @@ interface TreeSpeciesDao {
     fun getAllTreeSpeciesNamesLatin(): LiveData<List<String>>  // Flow is Kotlin's LiveData
 
     // Get tree species by name
-    @Query("SELECT name, name_latin, description, filtered FROM tree_species_table WHERE name = :name")
+    @Query("SELECT name, name_latin, restricted, description, filtered FROM tree_species_table WHERE name = :name")
     fun getTreeSpeciesByName(name: String): TreeSpecies?
 
     // Get tree species by latin name
-    @Query("SELECT name, name_latin, description, filtered FROM tree_species_table WHERE name_latin = :name")
+    @Query("SELECT name, name_latin, restricted, description, filtered FROM tree_species_table WHERE name_latin = :name")
     fun getTreeSpeciesByNameLatin(name: String): TreeSpecies?
 
     // Insert tree species from task table into tree species table
-    @Query("INSERT INTO tree_species_table (name, name_latin, description, filtered) SELECT DISTINCT tree_species_name, tree_species_name_latin, tree_species_description, tree_species_filtered FROM task_table")
+    @Query("INSERT INTO tree_species_table (name, name_latin, restricted, description, filtered) SELECT DISTINCT tree_species_name, tree_species_name_latin, tree_species_restricted, tree_species_description, tree_species_filtered FROM task_table")
     fun insertAllDistinctTreeSpeciesFromTaskTable()
 
     // Return corresponding latin name to name

@@ -3,7 +3,7 @@ buildscript {
 
     ext {
         kotlin_version = '1.5.31'
-        gradle_version = '7.4.1'
+        gradle_version = '7.4.2'
         nav_version = '2.4.1'
         //dataBindingCompilerVersion = gradleVersion // Always need to be the same.
         android_plugin_version = gradle_version

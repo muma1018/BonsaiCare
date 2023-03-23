@@ -160,6 +160,7 @@ class NewTreeFragment : Fragment() {
             val treeSpeciesTmp = TreeSpecies(
                 name = binding.spinnerTreeSpecies.selectedItem.toString(),
                 nameLatin = binding.spinnerTreeSpeciesLatin.selectedItem.toString(),
+                restricted = false,
                 description = binding.insertShortDescription.text.toString())
 
             viewModel.newTreeUnderConstruction.name = binding.insertMyTreeName.text.toString()

@@ -143,7 +143,11 @@ class BonsaiViewModel(private val repository: BonsaiRepository) : ViewModel() {
         return repository.getALlTaskTypes()
     }
 
-    fun getNumberOfTrees() : Int {
+    fun getAllDatabaseTrees(): LiveData<List<Tree>> {
+        return repository.allTrees
+    }
+
+    fun getNumberOfTrees() : LiveData<Int> {
         return repository.numberOfTrees
     }
 

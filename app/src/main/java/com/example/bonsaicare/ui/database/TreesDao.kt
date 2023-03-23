@@ -41,7 +41,7 @@ interface TreesDao {
     fun getUsersWithPlaylists(): List<TreeSpeciesWithTrees>
 
     @Query("SELECT COUNT(*) FROM trees_table")
-    fun getCount(): Int
+    fun getCount(): LiveData<Int>
 
     /**
      * Delete DatabaseTree from database

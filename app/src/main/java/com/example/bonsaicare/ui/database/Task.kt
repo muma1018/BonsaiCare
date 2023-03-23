@@ -15,7 +15,7 @@ data class Task(
     // From here: https://stackoverflow.com/questions/60986225/error-cannot-figure-out-how-to-save-this-field-into-database-you-can-consider
     // Embeds the TreeSpecies table with Tak table, we need a prefix because column names would be duplicated (name, name) etc
     @Embedded(prefix = "tree_species_")
-    var treeSpecies: TreeSpecies = TreeSpecies(name = "default name", nameLatin = "default name latin", description = "default short description"),
+    var treeSpecies: TreeSpecies = TreeSpecies(name = "default name", nameLatin = "default name latin", restricted = false, description = "default short description"),
 
     @Embedded(prefix = "task_type_")
     // can we avoid the 'q' here?

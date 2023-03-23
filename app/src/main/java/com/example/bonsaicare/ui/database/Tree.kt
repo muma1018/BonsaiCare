@@ -18,7 +18,7 @@ data class Tree(
     var treeSpeciesName: String = "default tree species",
 
     @Embedded
-    var treeSpecies: TreeSpecies = TreeSpecies(name="default tree species", nameLatin = "default tree species latin", description = "default short description for tree species"),
+    var treeSpecies: TreeSpecies = TreeSpecies(name="default tree species", nameLatin = "default tree species latin", restricted = false, description = "default short description for tree species"),
 
     @ColumnInfo(name = "imagesResourceIdDefault")
     var imagesResourceIdDefault: Int = R.drawable.trees_icon_colored,

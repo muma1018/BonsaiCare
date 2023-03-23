@@ -71,43 +71,47 @@ class MyGardenFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         // Add tree if not tree there yet
-        if (viewModel.getNumberOfTrees() < 1) {
-            // Todo: Make a few sample trees with nice images
-            var treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", description= "shortDescriptionTmp")
-            var testTree = Tree(
-                name = "Rose#1",
-                imagesUri = mutableListOf(
-                    Uri.Builder()
-                    .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                    .authority(context!!.packageName)
-                    .path(R.drawable.tree_larix_decidua.toString())
-                    .build(),
+        viewModel.getNumberOfTrees().observe(this) {value ->
+            val intValue = value ?: 0
 
-                    Uri.Builder()
-                    .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                    .authority(context!!.packageName)
-                    .path(R.drawable.tree_acer_palmatum.toString())
-                    .build()),
-                treeSpecies = treeSpeciesTmp)
-            viewModel.insertTree(testTree)
+            if (intValue < 1) {
+                // Todo: Make a few sample trees with nice images
+                var treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", restricted = false, description= "shortDescriptionTmp")
+                var testTree = Tree(
+                    name = "Rose#1",
+                    imagesUri = mutableListOf(
+                        Uri.Builder()
+                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                            .authority(context!!.packageName)
+                            .path(R.drawable.tree_larix_decidua.toString())
+                            .build(),
 
-            // Add toast that the tree was added
-            val toast = Toast.makeText(context, "Added tree", Toast.LENGTH_SHORT)
-            toast.show()
+                        Uri.Builder()
+                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                            .authority(context!!.packageName)
+                            .path(R.drawable.tree_acer_palmatum.toString())
+                            .build()),
+                    treeSpecies = treeSpeciesTmp)
+                viewModel.insertTree(testTree)
 
-            // Create new tree
-            treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", description= "shortDescriptionTest")
-            testTree = Tree(
-                name = "Rose#2",
-                //imagesResourceIdDefault = R.drawable.tree_acer_palmatum,
-                imagesUri = mutableListOf(
-                    Uri.Builder()
-                    .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                    .authority(context!!.packageName)
-                    .path(R.drawable.tree_acer_palmatum.toString())
-                    .build()),
-                treeSpecies = treeSpeciesTmp)
-            viewModel.insertTree(testTree)
+                // Add toast that the tree was added
+                val toast = Toast.makeText(context, "Added tree", Toast.LENGTH_SHORT)
+                toast.show()
+
+                // Create new tree
+                treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", restricted = false, description= "shortDescriptionTest")
+                testTree = Tree(
+                    name = "Rose#2",
+                    //imagesResourceIdDefault = R.drawable.tree_acer_palmatum,
+                    imagesUri = mutableListOf(
+                        Uri.Builder()
+                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                            .authority(context!!.packageName)
+                            .path(R.drawable.tree_acer_palmatum.toString())
+                            .build()),
+                    treeSpecies = treeSpeciesTmp)
+                viewModel.insertTree(testTree)
+            }
         }
 
         // Get recycler view

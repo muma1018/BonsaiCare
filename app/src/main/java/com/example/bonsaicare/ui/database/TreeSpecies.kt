@@ -13,6 +13,10 @@ data class TreeSpecies (
     @ColumnInfo(name = "name_latin")
     var nameLatin: String = "default tree species latin",
 
+    // Restricted by version
+    @ColumnInfo(name = "restricted")
+    var restricted: Boolean = false,
+
     @ColumnInfo(name = "description")
     var description: String = "default description",
 

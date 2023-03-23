@@ -191,6 +191,7 @@ class EditTreeFragment : Fragment() {
                             TreeSpecies(
                                 name = viewModel.editTreeUnderConstruction.treeSpecies.name,
                                 nameLatin = viewModel.editTreeUnderConstruction.treeSpecies.nameLatin,
+                                restricted = false,
                                 description = viewModel.editTreeUnderConstruction.treeSpecies.description
                             )
                         )

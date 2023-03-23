@@ -98,7 +98,7 @@ class NewTaskFragment : Fragment() {
 
                 // No tree species found in database, create own from user input
                 if (treeSpeciesTmp == null) {
-                    treeSpeciesTmp = TreeSpecies(treeSpecies, treeSpeciesLatin)
+                    treeSpeciesTmp = TreeSpecies(name = treeSpecies, nameLatin = treeSpeciesLatin, restricted = false)
 
                     // Add new tree species from user to database
                     viewModel.insertTreeSpecies(treeSpeciesTmp)

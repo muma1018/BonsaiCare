@@ -68,26 +68,44 @@ class FilterFragment : Fragment() {
 
         // Set onClickListener for RadioBtn to set from my trees
         binding.filterMyTreesTreeSpecies.setOnClickListener {
-            // Get number of My Trees
-            // Todo: This is 0, after fresh install and even adding a new tree
-            val numberTmp = viewModel.getNumberOfTrees()
+            // Observe number of My Trees
+            viewModel.getNumberOfTrees().observe(this) { value ->
+                val numberTrees = value ?: 0
 
-            // Todo: Why do we have to loop over them and are not able to get them directly from DB?
-            // Loop over all trees and add them to a list
-            val allTrees = mutableListOf<String>()
-            for (i in 0 until numberTmp) {
-                allTrees += viewModel.getTreeAtIndex(i).treeSpecies.name
-            }
+                // Todo: Why do we have to loop over them and are not able to get them directly from DB?
+                //  Can it be substituted with code below that is commented out? It's crashing but might be close
+                // Loop over all trees and add them to a list
+                val allTrees = mutableListOf<String>()
 
-            val childCount = binding.linearLayoutTreeSelection.childCount
-            for (count in 0..childCount) {
-                val checkboxTmp = binding.linearLayoutTreeSelection.getChildAt(count)
-                if (checkboxTmp is CheckBox) {
+                // Loop over trees and add to List
+                for (i in 0 until numberTrees) {
+                    allTrees += viewModel.getTreeAtIndex(i).treeSpecies.name
+                }
 
-                    checkboxTmp.isChecked = checkboxTmp.text in allTrees
+                val childCount = binding.linearLayoutTreeSelection.childCount
+                for (count in 0..childCount) {
+                    val checkboxTmp = binding.linearLayoutTreeSelection.getChildAt(count)
+                    if (checkboxTmp is CheckBox) {
+
+                        checkboxTmp.isChecked = checkboxTmp.text in allTrees
+                    }
                 }
             }
         }
+
+//        binding.filterMyTreesTreeSpecies.setOnClickListener {
+//            viewModel.getAllDatabaseTrees().observe(this) { listTree ->
+//
+//                val childCount = binding.linearLayoutTreeSelection.childCount
+//                for (count in 0..childCount) {
+//                    val checkboxTmp = binding.linearLayoutTreeSelection.getChildAt(count)
+//                    if (checkboxTmp is CheckBox) {
+//
+//                        checkboxTmp.isChecked = checkboxTmp.text in listTree[count].treeSpecies.name
+//                    }
+//                }
+//            }
+//        }
 
         // Set onClickListener for FilterNone Trees
         binding.filterNoneTreeSpecies.setOnClickListener{
