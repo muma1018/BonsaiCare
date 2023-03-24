@@ -6,6 +6,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 // Todo MVP2: Make actual .db files to populate database from
 // Todo: Move all calendars from 7b to 8a?
@@ -92,6 +93,9 @@ abstract class BonsaiDB : RoomDatabase() {
 
                         // Populate with default userSettings
                         database.userSettingsDao().initializeUserSettings()
+
+                        // Set the user's individual request code that is accessed in hidden fragment
+                        database.userSettingsDao().setRequestCode(Random.nextInt(1, 10000001))
                     }
                 }
             }

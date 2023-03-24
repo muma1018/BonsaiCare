@@ -1,32 +1,77 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
-    android:paddingBottom="60dp">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_activation_request_code_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This fragment will be used later.\nCurrently you only can go back :("
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Your activation request code is:"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <TextView
+        android:id="@+id/textView_request_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CODE"
+        android:textSize="32sp"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textView_activation_request_code_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
+    <ImageButton
+        android:id="@+id/btn_copy_request_code_to_clipboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_menu_copy"
+        app:layout_constraintEnd_toEndOf="@+id/textView_request_code"
+        app:layout_constraintStart_toStartOf="@+id/textView_request_code"
+        app:layout_constraintTop_toBottomOf="@id/textView_request_code" />
+
+
+    <EditText
+        android:id="@+id/edit_text_activation_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Your Activation Code"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_copy_request_code_to_clipboard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"/>
 
     <Button
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_activate"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="BACK"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="ACTIVATE"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_activation_code"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="MissingConstraints" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

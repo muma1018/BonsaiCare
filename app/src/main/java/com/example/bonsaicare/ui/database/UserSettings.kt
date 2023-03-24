@@ -10,7 +10,7 @@ class UserSettings {
     var id: Int = 0
 
     @ColumnInfo(name = "hardiness_zone")
-    var hardinessZone: String = "8a"
+    var hardinessZone: String = "8b"
 
     @ColumnInfo(name = "do_not_show_alert")
     var doNotShowAlert: Boolean = false
@@ -33,7 +33,10 @@ class UserSettings {
 
     // Needed to track selection of radio button - Value can be "All" or "None"
     @ColumnInfo(name = "active_radio_button_hardiness_zones")
-    var activeRadioButtonHardinessZones: String = "All"
+    var activeRadioButtonHardinessZones: String = "My Hardiness Zone"
+
+    @ColumnInfo(name = "request_code")
+    var requestCode: Int = 1
 
 }
 

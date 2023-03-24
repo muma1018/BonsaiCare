@@ -33,6 +33,7 @@ import com.example.bonsaicare.ui.database.TreeSpecies
 import com.example.bonsaicare.ui.isValidDateString
 import java.time.LocalDate
 
+// Todo: When clicking on an image in the gallery, it did show the default image not the actual image (acer)
 class EditTreeFragment : Fragment() {
 
     private var _binding: FragmentEditTreeBinding? = null

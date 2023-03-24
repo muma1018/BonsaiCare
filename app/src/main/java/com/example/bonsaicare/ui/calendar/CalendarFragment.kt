@@ -1,8 +1,10 @@
 package com.example.bonsaicare.ui.calendar
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -64,19 +66,22 @@ class CalendarFragment : Fragment() {
             viewModel.setSettingsFirstAppStartUp(false)
 
             // Get all tasks from database and add tree species to active filtered tree species
-            viewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
+            viewModel.allTasks.observe(this) { tasks ->
                 val treeSpeciesList = viewModel.getTreeSpeciesNameFromTasks(tasks)
 
                 // Create temporary list of active filtered tree species
                 val listOfTreeSpeciesTmp = viewModel.getTreeSpeciesNameFromTasks(tasks).toMutableSet()
 
-                // Loop over tree species and add to list of active filtered tree species
+                // Loop over tree species and add to list of tree species
                 for (treeSpecies in treeSpeciesList) {
                     // Update temporary list of active filtered tree species
                     viewModel.addUniqueTreeSpeciesToListOfTreeSpecies(listOfTreeSpeciesTmp, treeSpecies = treeSpecies)
                 }
                 // Set active filtered tree species from temporary list of tree species
-                viewModel.setSettingsActiveFilteredTreeSpecies(listOfTreeSpeciesTmp.joinToString { "," })
+                viewModel.setSettingsActiveFilteredTreeSpecies(listOfTreeSpeciesTmp.joinToString(separator = ","))
+
+                // Set active filtered hardiness zone from user settings hardiness zone
+                viewModel.setSettingsActiveFilteredHardinessZones(viewModel.getSettingsHardinessZone())
             }
         }
 
@@ -108,7 +113,7 @@ class CalendarFragment : Fragment() {
                 try {
                     // Filter cards with list from activeFilterTreeTypes
                     for (i in cards.indices.reversed()) {
-                        // Remove task if its treeType is not in activeFilterTreeTypes or not in activeFilterHardinessZones
+                        // Remove task if its treeType is not in activeFilterTreeTypes or its hardiness zone is not in activeFilterHardinessZones
                         if (cards[i].treeSpecies.name !in viewModel.getSettingsActiveFilteredTreeSpecies() || cards[i].hardinessZone !in viewModel.getSettingsActiveFilteredHardinessZones() ) {
                             cards.removeAt(i)
                         }
@@ -224,10 +229,15 @@ class CalendarFragment : Fragment() {
                     // Do nothing
                 }
                 val dialog: AlertDialog = builder.create()
+
+                dialog.setButton(AlertDialog.BUTTON_NEUTRAL,"Donate") { _, _ ->
+                    donate()
+
+                }
+
                 dialog.show()
-                //return@setOnClickListener
             }
-            // If newTaskFeatureActive is true, navigate to new task fragment
+            // Todo MVP2: If newTaskFeatureActive is true, navigate to new task fragment
             // Navigate to new task fragment
             //findNavController().navigate(R.id.action_navigation_calendar_to_new_task)
         }
@@ -240,5 +250,20 @@ class CalendarFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun donate() {
+        // Todo MVP2: This function is copy pasted from AboutUs fragment, better to use one function and refernce it
+        // Get paypal intent
+        val paypalIntent = requireContext().packageManager.getLaunchIntentForPackage("com.paypal.android.p2pmobile")
+        // Open paypal if installed, else open browser
+        if (paypalIntent != null) {
+            startActivity(paypalIntent)
+        } else {
+            // This also asks me to open the app after clicking on 'use browser'
+            val browserIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("http://www.paypal.me/markus88mueller"))
+            startActivity(browserIntent)
+        }
     }
 }

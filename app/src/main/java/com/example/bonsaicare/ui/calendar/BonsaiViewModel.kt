@@ -256,6 +256,9 @@ class BonsaiViewModel(private val repository: BonsaiRepository) : ViewModel() {
         return repository.getSettingsActiveRadioButtonHardinessZones()
     }
 
+    fun getRequestCode(): Int {
+        return repository.getRequestCode()
+    }
 }
 
 class BonsaiViewModelFactory(private val repository: BonsaiRepository) : ViewModelProvider.Factory {

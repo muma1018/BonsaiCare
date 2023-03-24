@@ -19,11 +19,11 @@ interface UserSettingsDao {
 
     // Initialize the table with default values, this should only be used once
     // "1STARTUP" is a placeholder for the first startup, which gets replaced with the actual list of all tree species available in the task database
-    @Query("INSERT INTO user_settings_table (id, hardiness_zone, do_not_show_alert, first_app_start_up, active_filtered_tree_species, active_filtered_hardiness_zones, active_radio_button_tree_species, active_radio_button_hardiness_zones) VALUES (0, '8a', 0, 1, '1STARTUP', 'TEST,TEST', 'All Trees', 'All')")
+    @Query("INSERT INTO user_settings_table (id, hardiness_zone, do_not_show_alert, first_app_start_up, active_filtered_tree_species, active_filtered_hardiness_zones, active_radio_button_tree_species, active_radio_button_hardiness_zones, request_code) VALUES (0, '8b', 0, 1, '1STARTUP', 'TEST,TEST', 'All Trees', 'My Hardiness Zone', 1)")
     fun initializeUserSettings()
 
     // Reset DoNotShowAlert and ActiveFilterTreeSpecies
-    @Query("UPDATE user_settings_table SET hardiness_zone = '8a', do_not_show_alert = 0, active_filtered_tree_species = '1STARTUP', active_filtered_hardiness_zones = 'TEST,TEST', active_radio_button_hardiness_zones = 'All', active_radio_button_tree_species = 'All Trees', active_filtered_hardiness_zones = 'All' WHERE id = 0")
+    @Query("UPDATE user_settings_table SET hardiness_zone = '8a', do_not_show_alert = 0, active_filtered_tree_species = '1STARTUP', active_filtered_hardiness_zones = 'TEST,TEST', active_radio_button_hardiness_zones = 'All', active_radio_button_tree_species = 'All Trees', active_filtered_hardiness_zones = 'My Hardiness Zone' WHERE id = 0")
     fun resetSettings()
 
     // Set first start up
@@ -107,6 +107,12 @@ interface UserSettingsDao {
     // Set active filtered hardiness zones
     @Query("UPDATE user_settings_table SET active_radio_button_hardiness_zones = :activeRadioButton WHERE id = 0")
     fun setSettingsActiveRadioButtonHardinessZones(activeRadioButton: String)
+
+    @Query("SELECT request_code FROM user_settings_table WHERE id = 0")
+    fun getRequestCode(): Int
+
+    @Query("UPDATE user_settings_table SET request_code = :requestCode WHERE id = 0")
+    fun setRequestCode(requestCode: Int)
 
 }
 

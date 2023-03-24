@@ -190,4 +190,7 @@ class BonsaiRepository(private val taskDao: TaskDao,
         return userSettingsDao.getSettingsActiveRadioButtonHardinessZones()
     }
 
+    fun getRequestCode(): Int {
+        return userSettingsDao.getRequestCode()
+    }
 }

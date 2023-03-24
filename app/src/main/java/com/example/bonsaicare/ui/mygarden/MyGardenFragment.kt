@@ -2,7 +2,6 @@ package com.example.bonsaicare.ui.mygarden
 
 import TreeListAdapter
 import android.content.ContentResolver
-import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -76,6 +75,7 @@ class MyGardenFragment : Fragment() {
 
             if (intValue < 1) {
                 // Todo: Make a few sample trees with nice images
+                // Todo: R.drawable.tree_acer_palmatum.toString() is shown as the delete drawable in the app
                 var treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", restricted = false, description= "shortDescriptionTmp")
                 var testTree = Tree(
                     name = "Rose#1",
@@ -95,8 +95,7 @@ class MyGardenFragment : Fragment() {
                 viewModel.insertTree(testTree)
 
                 // Add toast that the tree was added
-                val toast = Toast.makeText(context, "Added tree", Toast.LENGTH_SHORT)
-                toast.show()
+                Toast.makeText(context, "Added tree", Toast.LENGTH_SHORT).show()
 
                 // Create new tree
                 treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", restricted = false, description= "shortDescriptionTest")
