@@ -11,10 +11,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -24,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bonsaicare.R
 import com.example.bonsaicare.ui.database.Task
 
-
+// Todo: Defoliation is not showing in e.g. cork oak
 class CardListTreeSpeciesAdapter(private val sharedBonsaiViewModel: BonsaiViewModel) : ListAdapter<CardTreeSpecies, CardListTreeSpeciesAdapter.CardViewHolder>(CARDS_COMPARATOR) {
 
     private lateinit var context: Context
@@ -111,7 +108,10 @@ class CardListTreeSpeciesAdapter(private val sharedBonsaiViewModel: BonsaiViewMo
                         holder.tableLayoutCalendar.addView(tr1)
 
                         // Create and add textViews for taskName and short description for month
-                        val txTaskName = TextView(tableLayoutCalendarContext)
+                        //val txTaskName = TextView(tableLayoutCalendarContext)
+                        //txTaskName.setImageResource(R.drawable.ic_watering)
+                        val txTaskName = ImageView(tableLayoutCalendarContext)
+
                         val txVwStrokeBorder = TextView(tableLayoutCalendarContext)
                         val txJan = TextView(tableLayoutCalendarContext)
                         val txFeb = TextView(tableLayoutCalendarContext)
@@ -143,7 +143,8 @@ class CardListTreeSpeciesAdapter(private val sharedBonsaiViewModel: BonsaiViewMo
                         tr1.addView(txDec)
 
                         // Set up text views for taskName and short descriptions
-                        setUpTextViewTaskName(txTaskName, currentTask)
+                        setUpImageViewTaskName(txTaskName, currentTask)
+
                         setUpTextViewsMonths(txJan, 1, currentTask)
                         setUpTextViewsMonths(txFeb, 2, currentTask)
                         setUpTextViewsMonths(txMar, 3, currentTask)
@@ -182,7 +183,7 @@ class CardListTreeSpeciesAdapter(private val sharedBonsaiViewModel: BonsaiViewMo
             // Create dialog box and show alert
             val alert = dialogBuilderStartUp.create()
             // Set title for alert dialog box
-            alert.setTitle("Tree Description")
+            alert.setTitle(currentCard.treeSpecies.name)
             // Show alert dialog
             alert.show()
         }
@@ -366,6 +367,136 @@ class CardListTreeSpeciesAdapter(private val sharedBonsaiViewModel: BonsaiViewMo
             }
         }
         return textView
+    }
+
+    private fun setUpImageViewTaskName(imageView: ImageView, currentTask: Task): ImageView {
+        // Set text color and background color by task type
+        when (currentTask.taskType.name) {
+            "Repotting" -> {
+                imageView.setBackgroundResource(R.color.repotting)
+                imageView.setImageResource(R.drawable.ic_repotting)
+            }
+            "Location" -> {
+                imageView.setBackgroundResource(R.color.location)
+                imageView.setImageResource(R.drawable.ic_location)
+            }
+            "Pinching" -> {
+                imageView.setBackgroundResource(R.color.pinching)
+                imageView.setImageResource(R.drawable.ic_pinching)
+            }
+
+            "Pinching (ph1)" -> {
+                imageView.setBackgroundResource(R.color.pinching)
+                imageView.setImageResource(R.drawable.ic_pinching)
+            }
+            "Pinching (ph2)" -> {
+                imageView.setBackgroundResource(R.color.pinching)
+                imageView.setImageResource(R.drawable.ic_pinching)
+            }
+            "Pruning" -> {
+                imageView.setBackgroundResource(R.color.pruning)
+                imageView.setImageResource(R.drawable.ic_pruning)
+            }
+            "Defoliation" -> {
+                imageView.setBackgroundResource(R.color.defoliation)
+                imageView.setImageResource(R.drawable.ic_defoliation)
+            }
+            "Defoliation (ph1)" -> {
+                imageView.setBackgroundResource(R.color.defoliation)
+                imageView.setImageResource(R.drawable.ic_defoliation)
+            }
+            "Defoliation (ph2)" -> {
+                imageView.setBackgroundResource(R.color.defoliation)
+                imageView.setImageResource(R.drawable.ic_defoliation)
+            }
+            "Wiring" -> {
+                imageView.setBackgroundResource(R.color.wiring)
+                imageView.setImageResource(R.drawable.ic_wiring)
+            }
+            "Fertilizing" -> {
+                imageView.setBackgroundResource(R.color.fertilizing)
+                imageView.setImageResource(R.drawable.ic_fertilizing)
+            }
+            "Watering" -> {
+                imageView.setBackgroundResource(R.color.watering)
+                imageView.setImageResource(R.drawable.ic_watering)
+            }
+            "Propagation" -> {
+                imageView.setBackgroundResource(R.color.propagation)
+                imageView.setImageResource(R.drawable.ic_propagation)
+            }
+            "Diseases" -> {
+                imageView.setBackgroundResource(R.color.diseases)
+                imageView.setImageResource(R.drawable.ic_diseases)
+            }
+            "Specifics" -> {
+                imageView.setBackgroundResource(R.color.specifics)
+                imageView.setImageResource(R.drawable.ic_specifics)
+            }
+            else -> {
+                imageView.setBackgroundResource(R.color.white)
+            }
+        }
+
+        // Reduce height of icon by 50% (it is too big)
+        imageView.layoutParams.height = imageView.layoutParams.height / 2
+
+        when (val background: Drawable = imageView.background) {
+            is GradientDrawable -> {
+                background.setColor(ContextCompat.getColor(context, R.color.watering))
+            }
+        }
+        var longDescriptionMessage = currentTask.longDescription
+        // Set message text to "" if long description is "xxx"
+        if (currentTask.longDescription.contains("xxx")) {
+            longDescriptionMessage = "No description for this task available."
+        }
+
+        // Define a message and title for a confirmation dialog
+        val confirmMessage = "Are you sure you want to delete this task?"
+        val confirmTitle = "Confirm Task Deletion"
+
+        // Create a confirmation dialog
+        val confirmDialogBuilder = AlertDialog.Builder(context)
+        confirmDialogBuilder.setMessage(confirmMessage)
+            .setTitle(confirmTitle)
+            // Set the action for the "Yes" button
+            .setPositiveButton("Yes") { _, _ ->
+                sharedBonsaiViewModel.delete(currentTask)
+            }
+            // Set the action for the "Cancel" button
+            .setNegativeButton("Cancel") { _, _ ->
+                // Do nothing
+            }
+
+        // Build the confirmation dialog
+        val confirmDialog = confirmDialogBuilder.create()
+
+        // Set dialog box for task name clicks
+        imageView.setOnClickListener{
+            // build alert dialog
+            val dialogBuilderTaskName = AlertDialog.Builder(context)
+
+            // set message of alert dialog
+            dialogBuilderTaskName.setMessage(longDescriptionMessage)
+                // if the dialog is cancelable
+                .setCancelable(false)
+                // negative button text and action
+                .setPositiveButton("Back") { dialog, _ ->
+                    dialog.cancel()
+                }
+                .setNeutralButton("Delete Task") { _, _ ->
+                    confirmDialog.show()
+                }
+
+            // create dialog box
+            val alert = dialogBuilderTaskName.create()
+            // set title for alert dialog box
+            alert.setTitle(currentTask.treeSpecies.name + ": " + currentTask.taskType.name)
+            // show alert dialog
+            alert.show()
+        }
+        return imageView
     }
 
     // Function to set up text view for Task name

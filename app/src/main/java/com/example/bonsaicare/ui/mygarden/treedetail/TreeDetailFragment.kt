@@ -86,7 +86,6 @@ class TreeDetailFragment : Fragment() {
             // Do the task that requires this permission
         }
 
-
         // Get current tree as a temporary parameter
         val currentTreeTmp = viewModel.getTreeAtIndex(viewModel.currentTreeIndex)
 
@@ -120,6 +119,12 @@ class TreeDetailFragment : Fragment() {
             // Navigate to specific tree card
             findNavController().navigate(R.id.action_navigation_new_tree_to_image_view_full_screen)
             }
+        }
+
+        // Set clickListener for thumbnail image -> full screen
+        binding.imageViewTree.setOnClickListener {
+            viewModel.currentImageIndex = currentTreeTmp.thumbnailImageIndex
+            findNavController().navigate(R.id.action_navigation_new_tree_to_image_view_full_screen)
         }
 
         // Create onClickListener on Edit button, move to EditTree Fragment
@@ -164,25 +169,6 @@ class TreeDetailFragment : Fragment() {
         }
     }
 
-
-    // Todo: Can go? trying to resolve external storage permission errro
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
-                                            grantResults: IntArray) {
-        when (requestCode) {
-            REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSION -> {
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    // Permission was granted
-                    // Do the task that requires this permission
-                    Toast.makeText(context, "Test", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Permission denied
-                    // Disable the functionality that depends on this permission
-                }
-                return
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -103,18 +103,32 @@
     <!-- From BonsaiApp_EmptyActivityTest -->
     <!-- Row names for TableView -->
     <string name="task">Task</string>
-    <string name="jan">Jan</string>
-    <string name="feb">Feb</string>
-    <string name="mar">Mar</string>
-    <string name="apr">Apr</string>
-    <string name="may">May</string>
-    <string name="jun">Jun</string>
-    <string name="jul">Jul</string>
-    <string name="aug">Aug</string>
-    <string name="sep">Sep</string>
-    <string name="oct">Oct</string>
-    <string name="nov">Nov</string>
-    <string name="dez">Dec</string>
+    <string name="jan">J</string>
+    <string name="feb">F</string>
+    <string name="mar">M</string>
+    <string name="apr">A</string>
+    <string name="may">M</string>
+    <string name="jun">J</string>
+    <string name="jul">J</string>
+    <string name="aug">A</string>
+    <string name="sep">S</string>
+    <string name="oct">O</string>
+    <string name="nov">N</string>
+    <string name="dez">D</string>
+
+    <string name="task_">Task</string>
+    <string name="jan_">Jan</string>
+    <string name="feb_">Feb</string>
+    <string name="mar_">Mar</string>
+    <string name="apr_">Apr</string>
+    <string name="may_">May</string>
+    <string name="jun_">Jun</string>
+    <string name="jul_">Jul</string>
+    <string name="aug_">Aug</string>
+    <string name="sep_">Sep</string>
+    <string name="oct_">Oct</string>
+    <string name="nov_">Nov</string>
+    <string name="dez_">Dec</string>
 
     <!-- Cards strings -->
     <!-- CalendarTask Types -->
@@ -236,10 +250,11 @@
     </string>
     <string name="propagation_description">
         Common propagation techniques are:\n
-        • Seed [S]\n
-        • Cuttings [C]\n
-        • Root Cuttings [R]\n
-        • Air Layering [A].\n
+        • A: Air Layering\n
+        • C: Cuttings\n
+        • R: Root Cuttings\n
+        • S: Seed\n
+        • Y: Yamadori\n
     </string>
 
     <string name="diseases_description"><![CDATA[

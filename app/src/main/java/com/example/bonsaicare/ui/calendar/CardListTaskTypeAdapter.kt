@@ -45,7 +45,7 @@ class CardListTaskTypeAdapter(private val sharedBonsaiViewModel: BonsaiViewModel
             titleLatin.text = itemView.context.getString(R.string.description)
             titleHardinessZone.text = hardinessZone
             // Set text of header task (from Task) to Tree
-            textViewHeaderTask.text = itemView.context.getString(R.string.tree)
+            textViewHeaderTask.text = itemView.context.getString(R.string.tree_species_title)
         }
 
         companion object {

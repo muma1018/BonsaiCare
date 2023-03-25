@@ -15,6 +15,7 @@ import kotlin.random.Random
 // Todo: Do not use all trees with first version
 // Todo: Do not use all tasks in first version (Diseases, Specifics, Propagation)
 // Todo: Add japanese hardiness zone calendars (use kobayashi books calendars)
+// Todo: Do not use Akadama, Pumice, ... 1:2:1 but just deciduous tree/conifer soil mix as of Peter Warrens Book
 @Database(entities = [
     Task::class,
     TaskType::class,
