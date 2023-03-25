@@ -1,3 +1,4 @@
 <paths>
-    <files-path name="exported_files" path="." />
+    <!--files-path name="exported_files" path="." /-->
+    <external-path name="external_files" path="." />
 </paths>

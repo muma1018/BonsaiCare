@@ -17,8 +17,7 @@ import androidx.navigation.findNavController
 import com.example.bonsaicare.R
 import com.example.bonsaicare.databinding.FragmentCalendarBinding
 
-// Todo: ON first startup the Filters 'All Trees' and 'All' hardiness zones are ticked, but no trees are shown, fix that
-//  Also change 'All Trees' to 'All' and 'My Trees' to 'Own'?
+
 class CalendarFragment : Fragment() {
 
     // Init viewModel
@@ -252,7 +251,7 @@ class CalendarFragment : Fragment() {
         _binding = null
     }
 
-    fun donate() {
+    private fun donate() {
         // Todo MVP2: This function is copy pasted from AboutUs fragment, better to use one function and refernce it
         // Get paypal intent
         val paypalIntent = requireContext().packageManager.getLaunchIntentForPackage("com.paypal.android.p2pmobile")

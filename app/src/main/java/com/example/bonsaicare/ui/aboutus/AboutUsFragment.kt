@@ -57,6 +57,7 @@ class AboutUsFragment : Fragment() {
         binding.textThankYouForUsingOurApp.text = resources.getString(R.string.text_thank_you_for_using_our_app)
 
         // Todo MVP3: Implement the 'hidden' feature for hidden fragment - e.g. gives access to all calendars?
+        //  Dunno if we want that to be an actual feature in a release version
         // Initialize a counter variable to keep track of the number of times the TextView has been pressed
         var pressCounter = 0
 

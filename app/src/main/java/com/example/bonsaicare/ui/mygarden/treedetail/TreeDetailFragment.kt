@@ -1,15 +1,21 @@
 package com.example.bonsaicare.ui.mygarden.treedetail
 
 import ImageGalleryAdapter
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import android.Manifest
+import android.widget.Toast
 import com.example.bonsaicare.R
 import com.example.bonsaicare.databinding.FragmentTreeDetailCardBinding
 import com.example.bonsaicare.ui.calculateAge
@@ -18,7 +24,7 @@ import com.example.bonsaicare.ui.calendar.BonsaiViewModelFactory
 import com.example.bonsaicare.ui.calendar.BonsaiApplication
 import com.example.bonsaicare.ui.mygarden.MyGardenFragment
 
-
+// Todo: When adding images e.g. from Gallery, they are disapperaing after app restart
 class TreeDetailFragment : Fragment() {
 
     private var _binding: FragmentTreeDetailCardBinding? = null
@@ -30,6 +36,9 @@ class TreeDetailFragment : Fragment() {
     private val viewModel: BonsaiViewModel by activityViewModels {
         BonsaiViewModelFactory((requireNotNull(this.activity).application as BonsaiApplication).repository)
     }
+
+    // Int constant to identify the permission request
+    private val REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSION = 1002
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -61,6 +70,22 @@ class TreeDetailFragment : Fragment() {
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
+        // Todo: Can go? testing to solve the Permission Denial: opening provider com.google.android.apps.photos.contentprovider.impl.MediaContentProvider issue
+        // We need to get permission to access external storage to be able to display images from the phone's gallery
+        if (context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE) }
+            != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Request the permission
+            ActivityCompat.requestPermissions(
+                context as Activity,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSION)
+        } else {
+            // Permission has already been granted
+            // Do the task that requires this permission
+        }
+
 
         // Get current tree as a temporary parameter
         val currentTreeTmp = viewModel.getTreeAtIndex(viewModel.currentTreeIndex)
@@ -136,6 +161,26 @@ class TreeDetailFragment : Fragment() {
 
             // Show alert dialog
             alert.show()
+        }
+    }
+
+
+    // Todo: Can go? trying to resolve external storage permission errro
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        when (requestCode) {
+            REQUEST_CODE_READ_EXTERNAL_STORAGE_PERMISSION -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // Permission was granted
+                    // Do the task that requires this permission
+                    Toast.makeText(context, "Test", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Permission denied
+                    // Disable the functionality that depends on this permission
+                }
+                return
+            }
         }
     }
 

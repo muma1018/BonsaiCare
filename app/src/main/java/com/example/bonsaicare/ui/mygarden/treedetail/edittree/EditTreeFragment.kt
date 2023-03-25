@@ -19,6 +19,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -31,9 +32,13 @@ import com.example.bonsaicare.ui.calendar.BonsaiViewModelFactory
 import com.example.bonsaicare.ui.convertDateStringToIsoFormat
 import com.example.bonsaicare.ui.database.TreeSpecies
 import com.example.bonsaicare.ui.isValidDateString
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.time.LocalDate
 
-// Todo: When clicking on an image in the gallery, it did show the default image not the actual image (acer)
+// Todo: When adding an image or more via gallery, the recyclerview is not updated immedately, works for adding image with camera though
+//  or when coming back to fragment
 class EditTreeFragment : Fragment() {
 
     private var _binding: FragmentEditTreeBinding? = null
@@ -233,8 +238,6 @@ class EditTreeFragment : Fragment() {
         // Add images from gallery
         view.findViewById<ImageButton>(R.id.btn_add_images_from_gallery).setOnClickListener {
             // Open gallery interface
-            //val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            //startActivityForResult(gallery, LOAD_GALLERY_IMAGE_CODE)
             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).apply {
                 putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
                 type = "image/*"
@@ -440,24 +443,80 @@ class EditTreeFragment : Fragment() {
             // Add camera image to list of images of current tree
             imageUri?.let { viewModel.editTreeUnderConstruction.imagesUri.add(it) }
 
-            // Add image to corresponding database tree
-            imageUri?.let {
-                viewModel.insertImageIntoTreeByName(viewModel.currentTreeName, it)
+            // Get the content URI of the selected image from the gallery or camera
+            val sourceImageUri: Uri? = imageUri /* get the content URI of the image */
+
+            // Get the file path from the content URI
+            val filePath: String? = sourceImageUri?.let { context?.let { it1 ->
+                getFilePathFromUri(
+                    it1, it)
+            } }
+
+            // Create a new file in your app's directory
+            val appDir: File = context?.getExternalFilesDir(null)!!
+
+            val timeStamp = System.currentTimeMillis()
+            val fileName = "image_$timeStamp.jpg"  //  image_1622619081532.jpg
+            val newFile = File(appDir, fileName)
+
+
+            // Copy the image file to your app's directory
+            val inputStream = FileInputStream(File(filePath))
+            val outputStream = FileOutputStream(newFile)
+            val buffer = ByteArray(1024)
+            var length: Int
+            while (inputStream.read(buffer).also { length = it } > 0) {
+                outputStream.write(buffer, 0, length)
             }
+            outputStream.flush()
+            outputStream.close()
+            inputStream.close()
+
+            // Get the authority of your app's FileProvider
+            val authority = "${context!!.packageName}.fileprovider"
+            // Create a new content:// URI for the copied image file: newUri = 'content://com.example.bonsaicare.fileprovider/external_files/Android/data/com.example.bonsaicare/files/image_1679742179177.jpg'
+            val newUri = FileProvider.getUriForFile(context!!, authority, newFile)
+
+            // Add image to corresponding database tree
+            newUri?.let {viewModel.insertImageIntoTreeByName(viewModel.currentTreeName, it)}
         }
         else if (resultCode == Activity.RESULT_OK && requestCode == LOAD_GALLERY_IMAGE_CODE) {
 
-            // Add multiple selected gallery images to list of images of current tree
-            val selectedImages = data?.clipData?.let { clipData ->
-                (0 until clipData.itemCount).map { clipData.getItemAt(it).uri }
-            } ?: data?.data?.let { listOf(it) }
-            selectedImages?.let {
-                viewModel.editTreeUnderConstruction.imagesUri.addAll(it)
-
-                // Insert all images to list
-                for (image in it) {
-                    viewModel.insertImageIntoTreeByName(viewModel.editTreeUnderConstruction.name, image)
+            // Get the selected images
+            val imageUris = mutableListOf<Uri>()
+            if (data?.clipData != null) {
+                // Multiple images selected
+                val count = data.clipData!!.itemCount
+                for (i in 0 until count) {
+                    val imageUri = data.clipData!!.getItemAt(i).uri
+                    imageUris.add(imageUri)
                 }
+            } else if (data?.data != null) {
+                // Single image selected
+                val imageUri = data.data!!
+                imageUris.add(imageUri)
+            }
+
+            // Copy the selected images to your app's directory
+            val appDir: File = context?.getExternalFilesDir(null)!!
+            for (imageUri in imageUris) {
+                val timeStamp = System.currentTimeMillis()
+                val fileName = "image_$timeStamp.jpg"
+                val newFile = File(appDir, fileName)
+
+                val inputStream = context!!.contentResolver.openInputStream(imageUri)
+                val outputStream = FileOutputStream(newFile)
+                val buffer = ByteArray(1024)
+                var length: Int
+                while (inputStream?.read(buffer).also { length = it!! } != -1) {
+                    outputStream.write(buffer, 0, length)
+                }
+                outputStream.flush()
+                outputStream.close()
+                inputStream?.close()
+
+                // Add the new image to the corresponding database tree
+                viewModel.insertImageIntoTreeByName(viewModel.currentTreeName, Uri.fromFile(newFile))
             }
         }
         else {
@@ -494,6 +553,19 @@ class EditTreeFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
+
+
+    private fun getFilePathFromUri(context: Context, uri: Uri): String? {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = context.contentResolver.query(uri, projection, null, null, null)
+        cursor?.use {
+            val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            return cursor.getString(columnIndex)
+        }
+        return null
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
