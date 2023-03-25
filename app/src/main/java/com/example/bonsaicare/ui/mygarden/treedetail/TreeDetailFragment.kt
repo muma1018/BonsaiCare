@@ -99,8 +99,8 @@ class TreeDetailFragment : Fragment() {
         binding.textViewTreeShortDescription.text = currentTreeTmp.shortDescription
         binding.textViewTreeStyle.text = currentTreeTmp.style
         // Set dates as strings
-        binding.textViewTreeDateOfBirth.text =  "${currentTreeTmp.dateOfBirth.year}-${currentTreeTmp.dateOfBirth.monthValue}-${currentTreeTmp.dateOfBirth.dayOfMonth}" + " (${calculateAge(currentTreeTmp.dateOfBirth)} yrs)"
-        binding.textViewTreeDateOfAcquisition.text = "${currentTreeTmp.dateOfAcquisition.year}-${currentTreeTmp.dateOfAcquisition.monthValue}-${currentTreeTmp.dateOfAcquisition.dayOfMonth}"  + " (${calculateAge(currentTreeTmp.dateOfAcquisition)} yrs)"
+        binding.textViewTreeDateOfBirth.text = "${calculateAge(currentTreeTmp.dateOfBirth)} yrs" + " (${currentTreeTmp.dateOfBirth.year}-${currentTreeTmp.dateOfBirth.monthValue}-${currentTreeTmp.dateOfBirth.dayOfMonth})"
+        binding.textViewTreeDateOfAcquisition.text = "${calculateAge(currentTreeTmp.dateOfAcquisition)} yrs"  + " (${currentTreeTmp.dateOfAcquisition.year}-${currentTreeTmp.dateOfAcquisition.monthValue}-${currentTreeTmp.dateOfAcquisition.dayOfMonth})"
 
         // Image Gallery
         // Get all images from current tree

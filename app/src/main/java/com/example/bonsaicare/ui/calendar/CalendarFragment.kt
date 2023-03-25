@@ -231,7 +231,6 @@ class CalendarFragment : Fragment() {
 
                 dialog.setButton(AlertDialog.BUTTON_NEUTRAL,"Donate") { _, _ ->
                     donate()
-
                 }
 
                 dialog.show()

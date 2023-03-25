@@ -22,6 +22,8 @@ import com.example.bonsaicare.databinding.FragmentMyGardenBinding
 import com.example.bonsaicare.ui.calendar.*
 import com.example.bonsaicare.ui.database.*
 
+// Todo: See mobile version -> text does not fit the screen, just use tree name and thumbnail image
+//  Or: use one tree per row!
 class MyGardenFragment : Fragment() {
 
     // Init viewModel
@@ -70,46 +72,91 @@ class MyGardenFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         // Add tree if not tree there yet
-        viewModel.getNumberOfTrees().observe(this) {value ->
-            val intValue = value ?: 0
+        viewModel.getNumberOfTrees().observe(this) {numberTrees ->
+            val numTrees = numberTrees ?: 0
 
-            if (intValue < 1) {
-                // Todo: Make a few sample trees with nice images
-                // Todo: R.drawable.tree_acer_palmatum.toString() is shown as the delete drawable in the app
-                var treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", restricted = false, description= "shortDescriptionTmp")
-                var testTree = Tree(
-                    name = "Rose#1",
-                    imagesUri = mutableListOf(
-                        Uri.Builder()
-                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                            .authority(context!!.packageName)
-                            .path(R.drawable.tree_larix_decidua.toString())
-                            .build(),
+            if (numTrees < 1) {
+                //var treeSpeciesTmp = viewModel.getTreeSpeciesByName("Chinese Juniper")!!
+                var treeSpeciesTmp = TreeSpecies(name = "Chinese Juniper", nameLatin = "juniperus chinensis", restricted = false, description = "")
 
-                        Uri.Builder()
-                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                            .authority(context!!.packageName)
-                            .path(R.drawable.tree_acer_palmatum.toString())
-                            .build()),
-                    treeSpecies = treeSpeciesTmp)
-                viewModel.insertTree(testTree)
+                if (treeSpeciesTmp != null) {
+                    // Build tree
+                    val testTree = Tree(
+                        name = "Juniperus Chinensis #1",
+                        imagesUri = mutableListOf(
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_juniperus_chinensis_1.toString())
+                                .build(),
 
-                // Add toast that the tree was added
-                Toast.makeText(context, "Added tree", Toast.LENGTH_SHORT).show()
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_juniperus_chinensis_0.toString())
+                                .build()),
+                        treeSpecies = treeSpeciesTmp,
+                        style = "Moyogi")
+                    viewModel.insertTree(testTree)
+                }
 
-                // Create new tree
-                treeSpeciesTmp = TreeSpecies(name="Amur Maple", nameLatin="acer tataricum ginnala", restricted = false, description= "shortDescriptionTest")
-                testTree = Tree(
-                    name = "Rose#2",
-                    //imagesResourceIdDefault = R.drawable.tree_acer_palmatum,
-                    imagesUri = mutableListOf(
-                        Uri.Builder()
-                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                            .authority(context!!.packageName)
-                            .path(R.drawable.tree_acer_palmatum.toString())
-                            .build()),
-                    treeSpecies = treeSpeciesTmp)
-                viewModel.insertTree(testTree)
+                // Create new tree Acer Palmatum
+                //treeSpeciesTmp = viewModel.getTreeSpeciesByName("Japanese Maple")!!
+                treeSpeciesTmp = TreeSpecies(name = "Japanese Maple", nameLatin = "acer palmatum", restricted = false, description = "")
+
+                if (treeSpeciesTmp != null) {
+                    val testTree = Tree(
+                        name = "Acer Palmatum #1",
+                        imagesUri = mutableListOf(
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_acer_palmatum_1.toString())
+                                .build(),
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_acer_palmatum_2.toString())
+                                .build(),
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_acer_palmatum_0.toString())
+                                .build(),
+                        ),
+                        treeSpecies = treeSpeciesTmp,
+                        style = "Moyogi")
+                    viewModel.insertTree(testTree)
+                }
+
+                // Create new tree Malus Sylvestris
+                //treeSpeciesTmp = viewModel.getTreeSpeciesByName("Grab Apple")!!
+                treeSpeciesTmp = TreeSpecies(name = "Crab Apple", nameLatin = "malus sylvestris", restricted = false, description = "")
+
+                if (treeSpeciesTmp != null) {
+                    val testTree = Tree(
+                        name = "Malus Sylvestris #1",
+                        imagesUri = mutableListOf(
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_malus_sylvestris_0.toString())
+                                .build(),
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_malus_sylvestris_1.toString())
+                                .build(),
+                            Uri.Builder()
+                                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                                .authority(context!!.packageName)
+                                .path(R.drawable.tree_malus_sylvestris_2.toString())
+                                .build(),
+                        ),
+                        treeSpecies = treeSpeciesTmp,
+                        style = "Moyogi")
+                    viewModel.insertTree(testTree)
+                }
             }
         }
 

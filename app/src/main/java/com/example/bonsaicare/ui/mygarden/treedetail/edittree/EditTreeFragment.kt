@@ -11,6 +11,8 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -100,6 +102,50 @@ class EditTreeFragment : Fragment() {
         binding.editMyTreeStyle.setText(viewModel.editTreeUnderConstruction.style)
         binding.editDateOfBirth.setText(viewModel.editTreeUnderConstruction.dateOfBirth.toString())
         binding.editDateOfAcquisition.setText(viewModel.editTreeUnderConstruction.dateOfAcquisition.toString())
+
+        // Add a TextWatcher to monitor changes to the text input (spaces and newlines cannot be used
+        binding.editDateOfBirth.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // Do nothing
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Check if the input contains spaces, newlines
+                if (s?.contains(" ") == true || s?.contains("\n") == true) {
+                    // If it does, remove the spaces, newlines, and letters from the input
+                    val filtered = s.toString().replace(" ", "").replace("\n", "")
+                    binding.editDateOfBirth.setText(filtered)
+                    binding.editDateOfBirth.setSelection(filtered.length)
+                }
+            }
+        })
+
+        // Add a TextWatcher to monitor changes to the text input (spaces and newlines cannot be used
+        binding.editDateOfAcquisition.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // Do nothing
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Check if the input contains spaces, newlines
+                if (s?.contains(" ") == true || s?.contains("\n") == true) {
+                    // If it does, remove the spaces, newlines, and letters from the input
+                    val filtered = s.toString().replace(" ", "").replace("\n", "")
+                    binding.editDateOfAcquisition.setText(filtered)
+                    binding.editDateOfAcquisition.setSelection(filtered.length)
+                }
+            }
+        })
+
+
 
         // Image Gallery
         // Get all images from current tree

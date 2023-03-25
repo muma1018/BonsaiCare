@@ -28,6 +28,9 @@
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
+
+                <!--android:layout_width="200dp"
+                android:layout_height="200dp"-->
                     <ImageView
                         android:id="@+id/imageView_tree"
                         android:layout_width="wrap_content"
@@ -123,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@string/title_date_of_birth"
+                        android:text="@string/title_age"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <TextView
@@ -145,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@string/title_date_of_acquisition"
+                        android:text="@string/title_acquired"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <TextView

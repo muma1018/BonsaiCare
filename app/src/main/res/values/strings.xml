@@ -68,6 +68,7 @@
                 </ul> </br>
                 -->
 
+    <!-- Todo: Check if text is high quality -->
     <string name="introduction_text"><![CDATA[
                 <p align="left">
                 BonsaiCare is your guide to keeping your bonsai trees healthy and thriving.
@@ -430,6 +431,8 @@
     <string name="title_style">Style:</string>
     <string name="title_date_of_birth">Date of Birth:</string>
     <string name="title_date_of_acquisition">Date of Acquis.:</string>
+    <string name="title_age">Age:</string>
+    <string name="title_acquired">Acquired:</string>
 
     <!-- Fragment ImageViewFullScreenFragment -->
     <string name="title_image_view_full_screen_fragment" />
